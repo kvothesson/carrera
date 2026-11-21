@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delegación y orquestación · La carrera que no existía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="curso.css">
+</head>
+<body data-materia="Delegación y orquestación" data-sigue="Límites y permisos" data-sigue-href="limites.html">
+<div class="wrap">
+  <header class="tope">
+    <div>
+      <div class="miga"><span>La carrera que no existía</span><b>Año 2 · Materia 3 de 8</b></div>
+      <h1>Delegación y orquestación</h1>
+      <p class="idea">Repartir trabajo entre agentes sin que se pisen ni se pierda nada.</p>
+    </div>
+    <nav class="pasos-nav" id="nav" aria-label="Partes de la materia"></nav>
+  </header>
+
+  <main>
+  <div tabindex="-1" class="paso" data-n="Demo" data-t="La demo">
+  <section class="demo" aria-labelledby="t-demo">
+    <div class="cab">
+      <h2 id="t-demo">Dos agentes y un mismo documento</h2>
+      <p class="como">El informe de marzo ya tiene título y resumen. Le pedís a un agente que le agregue las ventas y a otro, los gastos. El documento tiene que terminar con seis partes.</p>
+    </div>
+    <div class="izq">
+      <div class="rot" style="margin-top:0">El pedido al agente 1, el celeste</div>
+      <p class="pedido"><span>&gt;</span> Agregá al informe la parte de ventas.</p>
+      <div class="rot">El pedido al agente 2, el naranja</div>
+      <p class="pedido"><span>&gt;</span> Agregá al informe la parte de gastos.</p>
+      <div class="rot" id="rot-modo">Cómo los organizás</div>
+      <div class="fila col" id="modo" role="group" aria-labelledby="rot-modo"></div>
+      <div class="cuenta" id="cuenta" aria-live="polite"><span class="n" id="n"></span><p id="msj"></p></div>
+    </div>
+    <div class="der">
+      <div class="escena"><div class="ctrl"><button type="button" id="otra">Otra vuelta</button></div><canvas id="escena" width="160" height="56" role="img" aria-label="Animación: dos agentes van y vienen entre sus escritorios y el documento del medio. Lo mismo está escrito abajo."></canvas></div>
+      <div class="rot">Las partes del informe, al final</div>
+      <div id="lista"></div>
+      <p id="resultado" role="status"></p>
+      <div class="rot">Vueltas anteriores</div>
+      <div id="entregas"></div>
+    </div>
+  </section>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="01" data-t="Partir el trabajo" hidden>
+    <div class="texto">
+      <span class="num">Unidad 01</span>
+      <h2>Partir el trabajo</h2>
+      <p>Antes de repartir hay que partir. La pregunta es una sola: ¿qué partes se pueden hacer sin esperar a otra?</p>
+      <p>Esas van a la vez, con un agente cada una. Las que necesitan algo de otra, esperan.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-partir">El mismo trabajo, de dos maneras</div>
+      <div class="fila" id="partir" role="group" aria-labelledby="rot-partir"></div>
+      <div id="partir-g" class="grafico"></div>
+      <p class="lee" id="partir-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="02" data-t="El encargo" hidden>
+    <div class="texto">
+      <span class="num">Unidad 02</span>
+      <h2>El encargo</h2>
+      <p>El agente que recibe el encargo no estuvo en tu cabeza ni en la charla anterior. Sabe solo lo que le escribas.</p>
+      <p>Lo que le falta, lo inventa. Lo que le sobra, lo distrae.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot">Tu encargo</div>
+      <p class="pedido" id="enc-pedido"></p>
+      <div class="rot">Sumale</div>
+      <div class="fila" id="enc-btn"></div>
+      <div class="rot">Lo que hizo</div>
+      <p class="lee" id="enc-txt" role="status" style="margin-top:0"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="03" data-t="Contexto y memoria" hidden>
+    <div class="texto">
+      <span class="num">Unidad 03</span>
+      <h2>Contexto y memoria</h2>
+      <p>Un agente trabaja con lo que tiene a la vista, y a la vista le entra poco. En una charla larga, lo primero que dijiste es lo primero que pierde.</p>
+      <p>Lo que importa se resume, o se anota en un archivo aparte, antes de que se pierda.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-mem">Qué hacés cuando la charla se hace larga</div>
+      <div class="fila" id="mem" role="group" aria-labelledby="rot-mem"></div>
+      <div id="mem-g" class="grafico"></div>
+      <p class="lee" id="mem-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="04" data-t="Trabajo en paralelo" hidden>
+    <div class="texto">
+      <span class="num">Unidad 04</span>
+      <h2>Trabajo en paralelo</h2>
+      <p>Dos agentes a la vez fallan de dos maneras: hacen lo mismo dos veces, o los dos creen que lo hace el otro.</p>
+      <p>Se arregla antes de empezar: cada parte con un dueño, y alguien que junte.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-par">Cómo repartís las partes del informe</div>
+      <div class="fila" id="par" role="group" aria-labelledby="rot-par"></div>
+      <table class="tabla" id="t-par"></table>
+      <p class="lee" id="par-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="05" data-t="Uno, varios o ninguno" hidden>
+    <div class="texto">
+      <span class="num">Unidad 05</span>
+      <h2>Un agente, varios o ninguno</h2>
+      <p>No todo pide agentes. Si una planilla lo resuelve, la planilla no se equivoca y no cobra.</p>
+      <p>Varios agentes rinden cuando las partes no se tocan. Si se tocan, uno solo.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-cual">La tarea</div>
+      <div class="fila" id="cual" role="group" aria-labelledby="rot-cual"></div>
+      <table class="tabla" id="t-cual"></table>
+      <p class="lee" id="cual-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="06" data-t="Informes de vuelta" hidden>
+    <div class="texto">
+      <span class="num">Unidad 06</span>
+      <h2>Informes de vuelta</h2>
+      <p>«Listo» no es un informe. No sabés qué hizo ni qué dejó sin hacer.</p>
+      <p>Lo que querés que te cuente al volver se pide antes de que salga.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot">Tu encargo</div>
+      <p class="pedido" id="inf-pedido"></p>
+      <div class="rot">Pedile que al volver te diga</div>
+      <div class="fila" id="inf-btn"></div>
+      <div class="rot">Lo que te contesta</div>
+      <div class="caja" id="inf-caja"></div>
+      <div class="rot">Cuánto podés confiar sin ir a mirar</div>
+      <div class="vara" aria-hidden="true"><i id="inf-vara"></i></div>
+      <p class="lee" id="inf-txt" role="status" style="min-height:0"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="07" data-t="Fallas en cadena" hidden>
+    <div class="texto">
+      <span class="num">Unidad 07</span>
+      <h2>Fallas en cadena</h2>
+      <p>Cuando un agente trabaja con lo que le pasó otro, un error del primero no se queda ahí: lo heredan todos.</p>
+      <p>Y cada uno hace bien lo suyo, con un dato malo.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-cad">Cuatro agentes, uno atrás del otro</div>
+      <div class="fila" id="cad" role="group" aria-labelledby="rot-cad"></div>
+      <div id="cad-g" class="grafico"></div>
+      <p class="lee" id="cad-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="Taller" data-t="El taller" hidden>
+    <div class="texto">
+      <span class="num">Unidad 08 · Taller</span>
+      <h2>Dirigir un equipo</h2>
+      <ol>
+        <li>Elegí un trabajo tuyo que lleve más de una hora.</li>
+        <li>Partilo. Marcá qué partes pueden ir a la vez y cuáles esperan.</li>
+        <li>Escribí un encargo por parte, con el molde de al lado.</li>
+        <li>Juntá lo que vuelve vos, o decidí quién lo junta.</li>
+      </ol>
+      <p class="nota">Aprobás cuando cada agente sabe qué es suyo y qué no, y vos podés comprobar lo que volvió.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot">El molde de un encargo</div>
+      <pre id="prompt">Tu tarea: [una sola cosa].
+Lo que necesitás saber: [los datos, nada más].
+No toques: [lo que es de otro].
+Al terminar decime: qué hiciste, qué no pudiste
+y cómo lo compruebo.</pre>
+      <button class="copiar" id="copiar" type="button" aria-live="polite">Copiar</button>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso cierre" data-n="Cierre" data-t="El cierre" hidden>
+    <span class="num">Cierre</span>
+    <h2>¿Más agentes es mejor?</h2>
+    <p class="resp"><b>No.</b> Cada agente que sumás trae trabajo que antes no había: repartir, esperar, juntar. A veces eso cuesta más que lo que ahorra.</p>
+    <p class="resp">Se suman agentes cuando el trabajo se deja partir. No antes.</p>
+    <div class="tres">
+      <div class="ejemplo"><span class="rotm">Uno solo</span><p>Cuando cada paso depende del anterior. Partirlo sería hacer que esperen en fila.</p></div>
+      <div class="ejemplo"><span class="rotm">Varios</span><p>Cuando las partes no se tocan. Cada uno con lo suyo, y alguien que junta.</p></div>
+      <div class="ejemplo"><span class="rotm">Ninguno</span><p>Cuando una planilla lo resuelve. No se equivoca y no hay que coordinarla.</p></div>
+    </div>
+    <p class="verbo"><q>El sistema no falla cuando sus partes fallan. Falla cuando todas tienen éxito, cada una sin saber qué hacen las demás.</q>Los Demonios del Estado, quinta Ley del Constructor. Archivo de Austral.</p>
+  </div>
+  </main>
+
+  <footer class="pie-nav">
+    <button class="copiar" id="ant" type="button"><span aria-hidden="true">← </span>Anterior</button>
+    <span class="aviso">Simulacro de juguete: los números y los tiempos están inventados. El temario es una opinión, no un plan de estudios oficial. <a href="https://kvothesson.com/">Kvothesson</a> · Universo Austral.</span>
+    <button class="copiar sig" id="sig" type="button"></button>
+  </footer>
+</div>
+
+<script src="curso.js"></script>
+<script>
+// Demo principal: dos agentes escriben en el mismo documento. Según cómo se organicen, uno pisa al otro o no.
+const COSAS = [["Título", "Resumen"], ["Ventas", "Clientes nuevos"], ["Gastos", "Sueldos"]];   // ya estaban, agente 1, agente 2
+let modo = "juntos", vueltas = 0, anteriores = [];
+
+function mostrarAnteriores(){
+  $("entregas").innerHTML = anteriores.length
+    ? anteriores.map(k => `<span class="k ${k === 6 ? "ok" : "mal"}"><span aria-hidden="true">${k === 6 ? "✓" : "✕"} </span>${k} de 6</span>`).join("")
+    : "Todavía ninguna.";
+}
+// lista: los códigos que quedaron (0 ya estaba, 1 agente 1, 2 agente 2). choque: si alguien pisó a otro.
+function cerrar(lista, choque){
+  const quedo = c => lista.filter(x => x === c).length;
+  $("lista").innerHTML = COSAS.flatMap((grupo, c) => grupo.map((nombre, i) => { const esta = i < quedo(c);
+    return `<span class="k ${esta ? (c ? "hecho" : "") : "mal"}">${esta ? "" : '<span aria-hidden="true">✕ </span>'}${nombre}<span class="vh">${esta ? "" : ", se perdió"}.</span></span>`; })).join("");
+  const t = lista.length === 6 ? (modo === "juntos" ? "suerte" : "ok") : "mal";
+  $("resultado").className = t;
+  $("resultado").textContent = choque ? "Se perdió lo del agente 1. El 2 había abierto el informe antes de que el 1 guardara, y al guardar su versión lo pisó. Ninguno se equivocó: cada uno hizo bien lo suyo."
+    : modo === "juntos" ? "Esta vez salió bien, de casualidad: el agente 2 abrió el informe cuando el 1 ya había guardado."
+    : modo === "turnos" ? "Salió bien, y va a salir bien siempre. El costo: el agente 2 esperó sin hacer nada."
+    : "Salió bien, y va a salir bien siempre. Trabajaron a la vez, cada uno en su copia. El costo: hace falta un tercero que las una.";
+  $("n").textContent = lista.length;
+  $("cuenta").classList.toggle("listo", t === "ok");
+  $("msj").innerHTML = `de 6 partes quedaron en el informe. ` + (modo === "juntos" ? "Con los dos a la vez sobre el mismo documento, depende de quién guarda último." : modo === "turnos" ? "De a uno no se pisan nunca." : "Con una copia cada uno no hay nada que pisar.");
+  anteriores.push(lista.length); if (anteriores.length > 6) anteriores.shift();
+  mostrarAnteriores();
+}
+
+// Escena en pixel art: dos escritorios y el documento en el medio. Hace una vuelta y queda quieta.
+const escena = (() => {
+  const cv = $("escena"), cx = cv.getContext("2d");
+  const H = 56, PISO = 50, VEL = 95;
+  const C = {fondo:"#04080d", linea:"#16303f", fuerte:"#4a7084", tinta:"#d8f3ff", hielo:"#5ce1ff", ambar:"#ffb347", mal:"#ff5a6e"};
+  const COLOR = [C.tinta, C.hielo, C.ambar];
+  const BICHO = ["..###..",".#####.","#o###o#","#######",".#####."];
+  // Sin animación si el sistema lo pide, o con ?sin-animacion en la dirección (sirve para probar).
+  const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches || location.search.includes("sin-animacion");
+  let W = 160, mx = 80, raf = 0, t0 = 0, lista = [0, 0], actores = [], choque = false, destello = 0, listo = true;
+  const px = (x,y,w,h,c) => { cx.fillStyle = c; cx.fillRect(Math.round(x), Math.round(y), w, h); };
+  function medir(){
+    const w = cv.parentElement.clientWidth - 16, s = w >= 560 ? 4 : 3;
+    W = Math.max(96, Math.floor(w / s)); mx = Math.floor(W / 2);
+    cv.width = W; cv.height = H; cv.style.width = W * s + "px"; cv.style.height = H * s + "px";
+  }
+  const casa = k => k === 1 ? 12 : k === 2 ? W - 13 : mx;       // dónde está el escritorio de cada uno
+  const junto = k => k === 1 ? mx - 17 : k === 2 ? mx + 17 : mx; // dónde se para frente a la lista
+  // Cada actor tiene una cola de pasos: ir a un lugar, esperar o hacer algo.
+  const ir = x => ({ir:x}), esperar = s => ({esperar:s}), hacer = (fn, s = .28) => ({hacer:fn, esperar:s});
+  function armar(){
+    lista = [0, 0]; choque = false; destello = 0; listo = false;
+    const a = k => ({k, x:casa(k), y:0, copia:null, hoja:null, cola:[]});
+    const a1 = a(1), a2 = a(2);
+    const leer = ag => hacer(() => { ag.copia = [...lista]; });
+    const escribir = ag => hacer(() => { ag.copia.push(ag.k, ag.k); ag.hoja = [...ag.copia]; }, .38);
+    const guardar = ag => hacer(() => { if (lista.some(c => !ag.copia.includes(c))) { choque = true; destello = .9; } lista = [...ag.copia]; ag.copia = null; });
+    const ronda = ag => [ir(junto(ag.k)), leer(ag), ir(casa(ag.k)), escribir(ag), ir(junto(ag.k)), guardar(ag), ir(casa(ag.k))];
+    if (modo === "copias") {
+      // Cada uno escribe en su hoja. Un tercero pasa, junta las dos y recién ahí toca la lista.
+      const junta = {k:0, x:mx, y:0, copia:null, hoja:null, cola:[]};
+      [a1, a2].forEach(ag => ag.cola = [hacer(() => { ag.hoja = [ag.k, ag.k]; }, .5)]);
+      junta.cola = [esperar(.7), ir(casa(1) + 9), hacer(() => { junta.copia = [0, 0, 1, 1]; a1.hoja = null; }), ir(casa(2) - 9), hacer(() => { junta.copia.push(2, 2); a2.hoja = null; }), ir(mx - 17), hacer(() => { lista = [...junta.copia]; junta.copia = null; })];
+      actores = [a1, a2, junta];
+    } else {
+      a1.cola = ronda(a1);
+      // Juntos: el 2 sale casi a la par y lee antes de que el 1 guarde. Una de cada tres veces llega tarde y se salva.
+      a2.cola = [esperar(modo === "turnos" ? 2.9 : vueltas % 3 === 2 ? 2.1 : .35), ...ronda(a2)];
+      actores = [a1, a2];
+    }
+    vueltas++;
+  }
+  function paso(dt){
+    destello = Math.max(0, destello - dt);
+    for (const ag of actores) {
+      const p = ag.cola[0]; if (!p) continue;
+      if (p.ir !== undefined) { const dx = p.ir - ag.x, av = VEL * dt; if (Math.abs(dx) <= av) { ag.x = p.ir; ag.cola.shift(); } else ag.x += Math.sign(dx) * av; ag.anda = true; }
+      else { ag.anda = false; if (p.hacer && !p.hecho) { p.hacer(); p.hecho = true; } p.esperar -= dt; if (p.esperar <= 0) ag.cola.shift(); }
+    }
+    if (actores.every(ag => !ag.cola.length) && destello <= 0 && !listo) { listo = true; actores.forEach(ag => ag.anda = false); cerrar(lista, choque); }
+  }
+  function hoja(x, y, filas){ px(x, y - 2 - filas.length * 2, 8, 2 + filas.length * 2, C.fuerte); filas.forEach((c, i) => px(x + 1, y - 1 - (filas.length - i) * 2, 6, 1, COLOR[c])); }
+  function dibujar(t){
+    px(0, 0, W, H, C.fondo); px(0, PISO, W, 1, C.linea);
+    // El documento del medio: cada parte son dos renglones
+    px(mx - 10, 6, 20, 34, destello > 0 && Math.floor(t * 10) & 1 ? C.mal : C.fuerte); px(mx - 9, 7, 18, 32, C.fondo);
+    lista.forEach((c, i) => { px(mx - 6, 10 + i * 5, 12, 1, COLOR[c]); px(mx - 6, 12 + i * 5, 8, 1, COLOR[c]); });
+    px(mx, 40, 1, PISO - 40, C.fuerte);
+    // Escritorios
+    for (const k of [1, 2]) { px(casa(k) - 6, PISO - 5, 13, 2, C.fuerte); px(casa(k) - 5, PISO - 3, 1, 3, C.fuerte); px(casa(k) + 5, PISO - 3, 1, 3, C.fuerte); }
+    for (const ag of actores) {
+      if (ag.hoja) hoja(casa(ag.k) - 4, PISO - 6, ag.hoja);
+      const b = ag.anda ? Math.floor(t * 8) & 1 : 0, x = Math.round(ag.x), yy = PISO - 6;
+      BICHO.forEach((f, i) => [...f].forEach((ch, c) => { if (ch !== ".") px(x - 3 + c, yy + i - b, 1, 1, ch === "o" ? C.fondo : COLOR[ag.k]); }));
+      px(x + (b ? -2 : -1), yy + 5, 1, 1, COLOR[ag.k]); px(x + (b ? 1 : 2), yy + 5, 1, 1, COLOR[ag.k]);
+      if (ag.copia) { px(x + 4, yy - 2, 4, 5, C.tinta); px(x + 5, yy - 1, 2, 1, C.fuerte); px(x + 5, yy + 1, 2, 1, C.fuerte); }
+    }
+  }
+  function cuadro(ms){
+    const t = ms / 1000, dt = Math.min(.05, t - t0); t0 = t;
+    paso(dt); dibujar(t);
+    raf = listo ? 0 : requestAnimationFrame(cuadro);
+  }
+  medir();
+  // Cambiar el tamaño del canvas lo borra: siempre se vuelve a dibujar.
+  const remedir = () => { if (!cv.parentElement.clientWidth) return; const antes = W; medir(); W !== antes && actores.length ? nueva() : dibujar(0); };
+  "ResizeObserver" in window ? new ResizeObserver(remedir).observe(cv.parentElement) : addEventListener("resize", remedir);
+  function nueva(){
+    cancelAnimationFrame(raf); raf = 0; armar();
+    $("resultado").textContent = "Trabajando…"; $("resultado").className = "";
+    if (quieto) { for (let i = 0; i < 400 && !listo; i++) paso(.05); dibujar(0); }
+    else { t0 = performance.now() / 1000; raf = requestAnimationFrame(cuadro); }
+  }
+  return {nueva};
+})();
+$("otra").addEventListener("click", () => escena.nueva());
+opciones("modo", [["juntos", "Los dos a la vez, sobre el mismo documento"], ["turnos", "De a uno: el segundo espera al primero"], ["copias", "Cada uno en su copia, y un tercero las une"]], k => {
+  modo = k; vueltas = 0; anteriores = []; mostrarAnteriores();
+  $("n").textContent = "?"; $("msj").textContent = "Mirá cómo queda el informe."; $("cuenta").classList.remove("listo"); $("lista").textContent = "";
+  escena.nueva();
+});
+
+// Unidad 1: el mismo trabajo entero o partido.
+opciones("partir", [["todo", "Un solo pedido"], ["partido", "Partido en tareas"]], k => {
+  const caja = (t, s) => `<div class="caja">${t}${s ? `<small>${s}</small>` : ""}</div>`, fl = '<span class="flecha" aria-hidden="true">→</span>';
+  $("partir-g").innerHTML = k === "todo"
+    ? `<p class="pedido"><span>&gt;</span> Armá el informe de marzo.</p>${caja("Un agente hace todo, una cosa atrás de otra", "ventas · gastos · clientes · resumen · revisión")}`
+    : `<div class="carriles"><div class="carril"><span class="rotm">A la vez</span>${caja("Juntar las ventas")}${caja("Juntar los gastos")}${caja("Juntar lo de clientes")}</div>${fl}<div class="carril"><span class="rotm">Después</span>${caja("Escribir el resumen", "necesita las tres partes")}</div>${fl}<div class="carril"><span class="rotm">Al final</span>${caja("Revisar y mandar", "necesita el informe entero")}</div></div>`;
+  $("partir-txt").textContent = k === "todo" ? "Anda, pero tarda la suma de todo. Y si se traba en los gastos, no avanza con nada más."
+    : "Ventas, gastos y clientes no se necesitan entre sí: van a la vez, con un agente cada una. El resumen espera, porque necesita las tres.";
+});
+
+// Unidad 2: el encargo se arma con lo que hace falta. Y con algo que sobra.
+const ENC = [["donde", "De dónde sacarlas", " Sacalas del sistema de facturación, no de los mails."], ["como", "En qué formato", " En pesos y sin IVA."], ["sino", "Qué hacer si falta algo", " Si falta un día, avisame y no lo completes."], ["sobra", "La historia de la empresa", " La empresa se fundó en 1998, cuando dos socios… (sigue dos páginas)"]];
+const encOn = new Set();
+$("enc-btn").innerHTML = ENC.map(e => `<button class="tog" type="button" data-e="${e[0]}" aria-pressed="false">${e[1]}</button>`).join("");
+function verEnc(){
+  const on = k => encOn.has(k);
+  $("enc-pedido").innerHTML = `<span>&gt;</span> Juntá las ventas de marzo.` + ENC.filter(e => on(e[0])).map(e => `<span class="${e[0] === "sobra" ? "sobra" : "mas"}">${e[2]}</span>`).join("");
+  document.querySelectorAll("#enc-btn [data-e]").forEach(b => b.setAttribute("aria-pressed", on(b.dataset.e)));
+  const hizo = !on("donde") ? "Sumó las ventas que encontró en los mails. Falta la mitad: nadie le dijo dónde estaban todas."
+    : !on("como") ? "Trajo el total con IVA y con pesos y dólares mezclados. Nadie le dijo cómo lo querías."
+    : !on("sino") ? "Faltaban dos días y los completó con un promedio. No te avisó: nadie le dijo que avisara."
+    : "Trajo el total de marzo, en pesos y sin IVA, y avisó que faltan dos días. Es lo que querías.";
+  $("enc-txt").textContent = hizo + (on("sobra") ? " Y tardó más: tuvo que leer dos páginas que no le servían para nada." : "");
+  $("enc-txt").className = "lee " + (on("donde") && on("como") && on("sino") && !on("sobra") ? "ok" : "suerte");
+}
+$("enc-btn").addEventListener("click", ev => { const b = ev.target.closest("[data-e]"); if (!b) return; encOn.has(b.dataset.e) ? encOn.delete(b.dataset.e) : encOn.add(b.dataset.e); verEnc(); });
+verEnc();
+
+// Unidad 3: al agente le entran seis cosas a la vista. Lo primero que le dijiste es lo que pierde.
+const CHARLA = ["Las ventas van sin IVA", "Todo en pesos", "Es para el directorio", "¿Con gráficos?", "Sí, uno por parte", "¿Cuántas páginas?", "Tres como mucho", "Escribí el resumen"];
+opciones("mem", [["caer", "Nada: que pierda lo viejo"], ["resumir", "Resumir lo viejo"], ["anotar", "Anotarlo en un archivo de notas"]], k => {
+  const mesa = k === "resumir" ? ["Resumen: sin IVA, en pesos, para el directorio", ...CHARLA.slice(3)] : CHARLA.slice(2);
+  const caidos = k === "resumir" ? [] : CHARLA.slice(0, 2);
+  $("mem-g").innerHTML = `<div class="rot">Lo que tiene a la vista: entran seis</div><div class="mesa">${mesa.map((m, i) => `<span class="k ${k === "resumir" && !i ? "hecho" : ""}">${m}</span>`).join("")}</div>`
+    + (caidos.length ? `<div class="rot">Lo que ya no ve</div><div>${caidos.map(m => `<span class="k mal">${m}</span>`).join("")}</div>` : "")
+    + (k === "anotar" ? `<div class="rot">En el archivo de notas, que lee cada vez que arranca</div><div><span class="k ok">Ventas sin IVA</span><span class="k ok">Todo en pesos</span><span class="k ok">Para el directorio</span></div>` : "");
+  $("mem-txt").textContent = k === "caer" ? "Escribió el resumen con las ventas con IVA y una parte en dólares. Eso se lo habías dicho al principio, y ya no lo tiene a la vista."
+    : k === "resumir" ? "Escribió bien el resumen. Tres cosas viejas ocupan un solo lugar y no se perdió ninguna."
+    : "Escribió bien el resumen. De la charla se le fueron igual, pero las notas las tienen. Y el mes que viene, en una charla nueva, las sigue sabiendo.";
+  $("mem-txt").className = "lee " + (k === "caer" ? "mal" : "ok");
+});
+
+// Unidad 4: quién escribe qué parte, con y sin dueño por parte.
+const PAR = {
+  ver:[["Ventas", 1, 0], ["Gastos", 1, 1], ["Clientes", 1, 1], ["Resumen", 0, 0]],
+  dueno:[["Ventas", 1, 0], ["Gastos", 0, 1], ["Clientes", 1, 0], ["Resumen", 0, 1]]};
+opciones("par", [["ver", "Que cada uno vea qué falta"], ["dueno", "Cada parte con un dueño"]], k => {
+  $("t-par").innerHTML = `<thead><tr><th scope="col">Parte</th><th scope="col">Agente 1</th><th scope="col">Agente 2</th><th scope="col">Resultado</th></tr></thead><tbody>`
+    + PAR[k].map(r => { const v = r[1] + r[2];
+        return `<tr><td>${r[0]}</td><td>${r[1] ? "la escribió" : ""}</td><td>${r[2] ? "la escribió" : ""}</td><td class="${v === 1 ? "ok" : "mal"}">${v === 1 ? "✓ una vez" : v === 2 ? "✕ dos veces, distintas" : "✕ nadie"}</td></tr>`; }).join("") + "</tbody>";
+  $("par-txt").textContent = k === "ver" ? "Gastos y clientes quedaron escritos dos veces, con números distintos. El resumen, nadie: cada uno pensó que lo hacía el otro."
+    : "Cada parte una vez. Lo decidiste vos antes de que empezaran, y a ellos no les llevó más tiempo.";
+  $("par-txt").className = "lee " + (k === "ver" ? "mal" : "ok");
+});
+
+// Unidad 5: tres tareas y con qué conviene hacer cada una.
+const CUAL = {
+  suma:["Sumar las ventas del mes", [["Una planilla", "al instante", "nada", "siempre", 1], ["Un agente", "segundos", "poco", "casi siempre", 0], ["Varios agentes", "minutos", "mucho", "casi siempre", 0]], "Es una cuenta. Una planilla la hace gratis y no se equivoca nunca."],
+  menu:["Escribir el resumen del informe", [["Una planilla", "no puede", "", "", 0], ["Un agente", "un minuto", "poco", "bien", 1], ["Varios agentes", "tres minutos", "mucho", "bien, pero vuelven tres resúmenes", 0]], "Hay que pensar, pero es una sola cosa. Con varios tendrías tres resúmenes distintos para juntar."],
+  precios:["Leer las reseñas de 5 productos", [["Una planilla", "no puede", "", "", 0], ["Un agente", "25 minutos", "poco", "bien", 0], ["Varios agentes", "5 minutos", "cinco veces más", "bien", 1]], "Son cinco lecturas que no se tocan. Cinco agentes a la vez tardan lo que tarda una."]};
+opciones("cual", Object.entries(CUAL).map(([k, v]) => [k, v[0]]), k => {
+  $("t-cual").innerHTML = `<thead><tr><th scope="col">Con qué</th><th scope="col">Tarda</th><th scope="col">Cuesta</th><th scope="col">Sale</th></tr></thead><tbody>`
+    + CUAL[k][1].map(r => `<tr class="${r[4] ? "elegida" : ""}"><td>${r[4] ? '<span aria-hidden="true">★ </span>' : ""}${r[0]}${r[4] ? '<span class="vh"> (conviene)</span>' : ""}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join("") + "</tbody>";
+  $("cual-txt").textContent = CUAL[k][2];
+});
+
+// Unidad 6: lo que pedís que te cuente al volver, y cuánto podés confiar en lo que vuelve.
+const INF = [["que", "El total y de dónde lo sacó", " Al terminar decime el total y de dónde lo sacaste.", "El total de marzo es $4.132.000. Lo saqué del sistema de facturación."], ["prueba", "El archivo con el detalle", " Pasame el archivo con el detalle.", "Va el archivo con las 998 facturas, una por fila."], ["falto", "Qué no pudo hacer", " Y qué no pudiste hacer.", "Faltan las ventas del 14 y el 15. No las completé."]];
+const infOn = new Set();
+$("inf-btn").innerHTML = INF.map(e => `<button class="tog" type="button" data-i="${e[0]}" aria-pressed="false">${e[1]}</button>`).join("");
+function verInf(){
+  const puestos = INF.filter(e => infOn.has(e[0]));
+  $("inf-pedido").innerHTML = `<span>&gt;</span> Juntá las ventas de marzo.` + puestos.map(e => `<span class="mas">${e[2]}</span>`).join("");
+  document.querySelectorAll("#inf-btn [data-i]").forEach(b => b.setAttribute("aria-pressed", infOn.has(b.dataset.i)));
+  $("inf-caja").textContent = puestos.length ? puestos.map(e => e[3]).join(" ") : "Listo.";
+  $("inf-vara").style.width = [5, 40, 70, 100][puestos.length] + "%";
+  $("inf-txt").textContent = ["Casi nada. «Listo» puede ser cualquier cosa.", "Algo. Tenés un dato, pero es su palabra.", "Bastante. Te falta poco para no tener que ir a mirar.", "Mucho. Sabés qué hizo, tenés con qué comprobarlo y sabés qué quedó sin hacer."][puestos.length];
+}
+$("inf-btn").addEventListener("click", ev => { const b = ev.target.closest("[data-i]"); if (!b) return; infOn.has(b.dataset.i) ? infOn.delete(b.dataset.i) : infOn.add(b.dataset.i); verInf(); });
+verInf();
+
+// Unidad 7: cuatro agentes en fila. El primero trae un cero de más.
+opciones("cad", [["sin", "Sin controles"], ["con", "Con un control después del primero"]], k => {
+  const con = k === "con", fl = '<span class="flecha" aria-hidden="true">→</span>';
+  const caja = (rot, txt, cls) => `<div class="caja ${cls}"><span class="rotm">${rot}</span>${txt}</div>`;
+  $("cad-g").innerHTML = `<div class="cadena">${caja("Junta las ventas", "✕ $41 millones, y eran 4,1", "roto")}${fl}`
+    + (con ? `${caja("Control", "¿Diez veces más que febrero? Frena acá.", "freno")}${fl}${caja("Los otros tres", "No arrancaron", "trabajo")}`
+           : `${caja("Calcula cuánto creció", "✕ 900%", "roto")}${fl}${caja("Escribe el resumen", "✕ «Mes récord»", "roto")}${fl}${caja("Arma la presentación", "✕ va al directorio", "roto")}`) + `</div>`;
+  $("cad-txt").textContent = con ? "El control cuesta un paso más y frena el error donde nació. Se corrige un número, no una presentación entera."
+    : "Un solo error, al principio: un cero de más. Los otros tres hicieron bien su parte, con un dato malo. Al directorio le llega un mes récord que no existió.";
+  $("cad-txt").className = "lee " + (con ? "ok" : "mal");
+});
+
+iniciarCurso();
+</script>
+</body>
+</html>

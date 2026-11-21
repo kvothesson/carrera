@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Responsabilidad · La carrera que no existía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="curso.css">
+</head>
+<body data-materia="Responsabilidad">
+<div class="wrap">
+  <header class="tope">
+    <div>
+      <div class="miga"><span>La carrera que no existía</span><b>Año 4 · Materia 8 de 8</b></div>
+      <h1>Responsabilidad</h1>
+      <p class="idea">Poder decir quién decidió qué, y hacerse cargo.</p>
+    </div>
+    <nav class="pasos-nav" id="nav" aria-label="Partes de la materia"></nav>
+  </header>
+
+  <main>
+  <div tabindex="-1" class="paso" data-n="Demo" data-t="La demo">
+  <section class="demo" aria-labelledby="t-demo">
+    <div class="cab">
+      <h2 id="t-demo">¿Qué pasó?</h2>
+      <p class="como">Un agente se encarga de los mails a clientes de una tienda. Ahora hay que entender qué pasó, y depende de lo que el agente dejó guardado.</p>
+    </div>
+    <div class="izq">
+      <div class="rot" style="margin-top:0">El incidente</div>
+      <div class="mail incidente">El lunes a las 9:03, 3.000 clientes recibieron un cupón del <b>50%</b> de descuento. La promo era del 5%.</div>
+      <div class="rot" id="rot-reg">Qué guardaba el agente</div>
+      <div class="fila col" id="reg" role="group" aria-labelledby="rot-reg"></div>
+      <div class="rot">Lo que necesitás contestar</div>
+      <ul class="chequeo" id="chequeo"></ul>
+    </div>
+    <div class="der">
+      <div class="rot" style="margin-top:0">Lo que podés reconstruir</div>
+      <ol class="tiempo" id="tiempo"></ol>
+      <p id="resultado" role="status"></p>
+      <div class="cuenta" id="cuenta" aria-live="polite"><span class="n" id="n"></span><p id="msj"></p></div>
+    </div>
+  </section>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="01" data-t="Quién responde" hidden>
+    <div class="texto">
+      <span class="num">Unidad 01</span>
+      <h2>Quién responde</h2>
+      <p>Cuando actúa un agente, hubo alguien que lo pidió, alguien que lo armó y alguien que le dio los datos. Cada uno tuvo una parte.</p>
+      <p>El agente no responde: no puede pedir perdón ni dar la cara. Responden las personas.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-qui" style="margin-top:0">En el caso del cupón del 50%, mirá a cada uno</div>
+      <div class="fila" id="qui" role="group" aria-labelledby="rot-qui"></div>
+      <div class="caja" id="qui-caja" style="margin-top:10px"></div>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="02" data-t="Un registro que se lee" hidden>
+    <div class="texto">
+      <span class="num">Unidad 02</span>
+      <h2>Un registro que se pueda leer</h2>
+      <p>Guardar todo no alcanza. Si para encontrar una decisión hay que leer 40.000 líneas, nadie la va a encontrar.</p>
+      <p>El registro que sirve guarda decisiones y acciones, con el porqué, en palabras.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-leg" style="margin-top:0">Qué guarda</div>
+      <div class="fila" id="leg" role="group" aria-labelledby="rot-leg"></div>
+      <div class="mail salida" id="leg-txt-reg" style="margin-top:10px"></div>
+      <p class="lee" id="leg-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="03" data-t="Explicar después" hidden>
+    <div class="texto">
+      <span class="num">Unidad 03</span>
+      <h2>Explicar después</h2>
+      <p>Si le preguntás a un agente por qué hizo algo, arma una explicación en ese momento. Suena bien, y puede no tener nada que ver.</p>
+      <p>La explicación de verdad es la que quedó guardada cuando decidió.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">El caso</div>
+      <p class="pedido"><span>&gt;</span> Un cliente pidió devolver una campera. El agente le dijo que no. El cliente pregunta por qué.</p>
+      <div class="rot" id="rot-exp">Cómo lo averiguás</div>
+      <div class="fila" id="exp" role="group" aria-labelledby="rot-exp"></div>
+      <div class="mail" id="exp-resp" style="margin-top:10px"></div>
+      <p class="lee" id="exp-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="04" data-t="Lo que firmás" hidden>
+    <div class="texto">
+      <span class="num">Unidad 04</span>
+      <h2>Lo que firmás es tuyo</h2>
+      <p>Si un agente escribió el informe y vos lo mandás, el informe es tuyo. Con sus aciertos y con sus errores.</p>
+      <p>Y lo generado puede parecerse demasiado a algo ajeno. Eso también lo firmás vos.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">Un párrafo del informe al directorio, escrito por un agente</div>
+      <div class="mail" id="firma"></div>
+      <div class="rot" id="rot-fir">Antes de mandarlo</div>
+      <div class="fila" id="fir" role="group" aria-labelledby="rot-fir"></div>
+      <p class="lee" id="fir-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="05" data-t="Datos de otros" hidden>
+    <div class="texto">
+      <span class="num">Unidad 05</span>
+      <h2>Datos de otras personas</h2>
+      <p>Un agente con memoria guarda lo que lee. Si lee algo íntimo, lo puede usar después donde no corresponde.</p>
+      <p>Que recuerde solo lo que la tarea necesita. Lo demás, que lo olvide.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">El mail de una clienta</div>
+      <div class="mail">«Hola, no puedo ir a buscar el pedido porque estoy en tratamiento. ¿Me lo mandan a casa?»</div>
+      <div class="rot" id="rot-mem">Qué recuerda el agente</div>
+      <div class="fila" id="mem" role="group" aria-labelledby="rot-mem"></div>
+      <div class="rot">Lo que guardó de Ana</div>
+      <div id="mem-chips"></div>
+      <div class="rot">Un mes después, en un mail de promociones</div>
+      <div class="mail" id="mem-promo"></div>
+      <p class="lee" id="mem-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="06" data-t="Cuándo no automatizar" hidden>
+    <div class="texto">
+      <span class="num">Unidad 06</span>
+      <h2>Cuándo no automatizar</h2>
+      <p>Que un agente pueda hacer algo no quiere decir que deba hacerlo solo.</p>
+      <p>Cuando el mensaje necesita que alguien dé la cara, decida algo o escuche, va una persona.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-aut" style="margin-top:0">La tarea</div>
+      <div class="fila col" id="aut" role="group" aria-labelledby="rot-aut"></div>
+      <div class="escala" id="escala" aria-hidden="true"><span>Agente solo</span><span>Agente y persona</span><span>Una persona</span></div>
+      <p class="lee" id="aut-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="Taller" data-t="El taller" hidden>
+    <div class="texto">
+      <span class="num">Unidad 07 · Taller</span>
+      <h2>Analizar un incidente sin buscar culpables</h2>
+      <ol>
+        <li>Elegí algo que salió mal en tu trabajo, con un agente o sin él.</li>
+        <li>Armá la línea de tiempo: quién pidió qué, qué se leyó, qué se decidió, qué se hizo.</li>
+        <li>En cada paso preguntá qué lo hizo posible, no quién se equivocó.</li>
+        <li>Escribí dos cambios: uno para que no vuelva a pasar y otro para notarlo antes.</li>
+      </ol>
+      <p class="nota">Aprobás cuando el informe no tiene ningún nombre como causa, y sí dos cambios concretos.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">El molde del informe</div>
+      <pre id="prompt">Qué pasó, en una línea:
+Línea de tiempo:
+Qué lo hizo posible:
+Qué cambiamos para que no vuelva a pasar:
+Qué cambiamos para notarlo antes:
+Lo que todavía no sabemos:</pre>
+      <button class="copiar" id="copiar" type="button" aria-live="polite">Copiar</button>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso cierre" data-n="Cierre" data-t="El cierre" hidden>
+    <span class="num">Cierre · Fin de la carrera</span>
+    <h2>¿Entonces la culpa es del agente?</h2>
+    <p class="resp"><b>No.</b> Un agente no tiene culpa ni mérito. Responden las personas que lo pidieron, lo armaron y lo dejaron actuar.</p>
+    <p class="resp">Y responder no es encontrar a quién señalar: es poder contar qué pasó y cambiar lo que lo hizo posible.</p>
+    <div class="tres">
+      <div class="ejemplo"><span class="rotm">Antes</span><p>Decidí quién responde por cada cosa que el agente puede hacer.</p></div>
+      <div class="ejemplo"><span class="rotm">Durante</span><p>Que deje rastro de lo que hizo y de por qué, en palabras.</p></div>
+      <div class="ejemplo"><span class="rotm">Después</span><p>Buscá qué lo hizo posible. Los culpables no arreglan nada.</p></div>
+    </div>
+    <p class="verbo"><q>Quipu no almacena información. Almacena consecuencias.</q>Nodo Quipu. Archivo de Austral.</p>
+  </div>
+  </main>
+
+  <footer class="pie-nav">
+    <button class="copiar" id="ant" type="button"><span aria-hidden="true">← </span>Anterior</button>
+    <span class="aviso">Simulacro de juguete: la tienda, las personas y los mails están inventados. El temario es una opinión, no un plan de estudios oficial. <a href="https://kvothesson.com/">Kvothesson</a> · Universo Austral.</span>
+    <button class="copiar sig" id="sig" type="button"></button>
+  </footer>
+</div>
+
+<script src="curso.js"></script>
+<script>
+const quietoDemo = matchMedia("(prefers-reduced-motion: reduce)").matches || location.search.includes("sin-animacion");
+
+// Demo principal: el mismo incidente, reconstruido con tres niveles de registro.
+// [hora, qué quedó guardado, nivel que hace falta para verlo: 1 solo acciones, 2 acciones y porqué]
+const TIEMPO = [
+  ["08:55", "Marta le pidió: «Mandá el cupón de la promo a los clientes».", 2],
+  ["09:01", "Leyó la planilla de promos. En «Promo otoño», la columna Descuento decía 50.", 2],
+  ["09:01", "Decidió usar 50: era la única promo activa.", 2],
+  ["09:02", "Generó el cupón OTONO50, del 50%.", 1],
+  ["09:02", "No pidió confirmación: la regla decía que los mails a clientes no la necesitan.", 2],
+  ["09:03", "Mandó 3.000 mails.", 1]];
+// [pregunta, nivel que hace falta para contestarla]
+const PREG = [["¿Quién lo pidió?", 2], ["¿Qué hizo el agente?", 1], ["¿De dónde sacó el 50?", 2], ["¿Por qué nadie lo frenó?", 2]];
+const NIVEL = {nada:[0, "Nada"], acciones:[1, "Solo lo que hizo"], todo:[2, "Lo que hizo, lo que leyó y por qué"]};
+const RES = {
+  nada:["mal", "Sabés lo que ya sabías: que llegaron los mails. Sin rastro, solo queda adivinar, y adivinar termina en buscar a quién culpar."],
+  acciones:["suerte", "Sabés qué hizo y a qué hora. No sabés de dónde sacó el 50 ni por qué nadie lo frenó."],
+  todo:["ok", "Dos cosas lo hicieron posible: un 50 mal cargado en la planilla y una regla que dejaba mandar 3.000 mails sin preguntar. Se arreglan las dos, sin buscar culpables."]};
+let nivel = 0, clave = "nada", corrida = 0;
+function verChequeo(final){
+  $("chequeo").innerHTML = PREG.map(p => { const ok = final && nivel >= p[1];
+    return `<li class="${ok ? "ok" : ""}"><span aria-hidden="true">${ok ? "✓" : "?"}</span> ${p[0]}<span class="vh">${ok ? ": se puede contestar" : ": no se puede contestar"}</span></li>`; }).join("");
+}
+function terminar(){
+  verChequeo(true);
+  const n = PREG.filter(p => nivel >= p[1]).length;
+  $("resultado").textContent = RES[clave][1]; $("resultado").className = RES[clave][0];
+  $("n").textContent = `${n} de 4`; $("msj").textContent = n === 4 ? "preguntas se pueden contestar. El registro cuenta la historia entera." : "preguntas se pueden contestar con lo que quedó guardado.";
+  $("cuenta").classList.toggle("listo", n === 4);
+}
+function correr(){
+  const mia = ++corrida, filas = TIEMPO.filter(t => nivel >= t[2]);
+  verChequeo(false); $("n").textContent = "?"; $("msj").textContent = "Reconstruyendo…"; $("cuenta").classList.remove("listo");
+  $("resultado").textContent = ""; $("resultado").className = "";
+  const li = t => `<li><span class="hora">${t[0]}</span><span>${t[1]}</span></li>`;
+  if (!filas.length) { $("tiempo").innerHTML = '<li class="vacio"><span class="hora">—</span><span>No quedó nada guardado.</span></li>'; terminar(); return; }
+  if (quietoDemo) { $("tiempo").innerHTML = filas.map(li).join(""); terminar(); return; }
+  $("tiempo").innerHTML = ""; let k = 0;
+  const paso = () => { if (mia !== corrida) return; if (k >= filas.length) { terminar(); return; } $("tiempo").insertAdjacentHTML("beforeend", li(filas[k++]).replace("<li>", '<li class="aparece">')); setTimeout(paso, 450); };
+  paso();
+}
+opciones("reg", Object.entries(NIVEL).map(([k, v]) => [k, v[1]]), k => { clave = k; nivel = NIVEL[k][0]; correr(); });
+
+// Unidad 1: la parte de cada uno en el caso del cupón.
+const QUI = {
+  marta:["Marta, que lo pidió", "Pidió «el cupón de la promo» sin decir cuál ni de cuánto.", "Pedir con el número: «el cupón de otoño, del 5%»."],
+  arma:["Quien armó el agente", "Le dio permiso de mandar mails a todos los clientes sin preguntar.", "Que pida confirmación antes de mandar a más de 100 personas."],
+  datos:["Quien cargó la planilla", "Escribió 50 en lugar de 5, un viernes a la tarde.", "Que la planilla no acepte descuentos de más de 20% sin una segunda firma."],
+  agente:["El agente", "Hizo exactamente lo que decían el pedido, la planilla y sus reglas.", "Nada que pueda hacer solo. Se le cambian las reglas y los datos."]};
+opciones("qui", Object.entries(QUI).map(([k, q]) => [k, q[0]]), k => {
+  const q = QUI[k];
+  $("qui-caja").innerHTML = `<span class="rotm">Su parte</span>${q[1]}<span class="rotm" style="margin-top:8px">Lo que se puede cambiar</span>${q[2]}`;
+});
+
+// Unidad 2: el mismo registro, sin filtrar y legible.
+opciones("leg", [["todo", "Todo, sin filtrar"], ["importa", "Decisiones y acciones, en palabras"]], k => {
+  const todo = k === "todo";
+  $("leg-txt-reg").textContent = todo
+    ? "09:01:00.003 conexión abierta\n09:01:00.004 lectura bloque 1/4096\n09:01:00.019 lectura bloque 2/4096\n09:01:00.031 cache miss\n09:01:00.032 promos.xlsx fila 7 col D = 50\n09:01:00.033 lectura bloque 3/4096\n… y 39.994 líneas más"
+    : "08:55 Marta pidió mandar el cupón de la promo.\n09:01 Usé «Promo otoño», 50%: única promo activa.\n09:02 Mandé sin confirmar: la regla no lo pide.\n09:03 Salieron 3.000 mails.";
+  $("leg-txt").textContent = todo ? "El dato que importa está en la quinta línea, entre 40.000. Está guardado, pero nadie lo va a encontrar."
+    : "Cuatro líneas que se leen en diez segundos y cuentan la historia. El detalle técnico puede existir aparte, por si hace falta.";
+  $("leg-txt").className = "lee " + (todo ? "mal" : "ok");
+});
+
+// Unidad 3: la explicación inventada ahora, contra la que quedó guardada.
+opciones("exp", [["pregunta", "Preguntarle ahora por qué"], ["registro", "Mirar el registro de ese momento"]], k => {
+  const reg = k === "registro";
+  $("exp-resp").textContent = reg ? "Leyó la palabra «regalo» en el mail. Aplicó la regla 4 del manual: «Regalos sin ticket: no se devuelven». No abrió el adjunto, que era el ticket."
+    : "«Porque pasaron más de 30 días desde la compra.»";
+  $("exp-txt").textContent = reg ? "Ahora sabés la causa: leyó «regalo» y no miró el adjunto. Se le devuelve la campera al cliente y se corrige la regla."
+    : "Suena razonable, pero la compra fue hace 12 días. Es una explicación armada ahora, no la de ese momento.";
+  $("exp-txt").className = "lee " + (reg ? "ok" : "mal");
+});
+
+// Unidad 4: el párrafo que vas a firmar, con un número mal y una frase ajena.
+opciones("fir", [["sin", "Firmarlo sin leer"], ["con", "Leerlo antes de firmar"]], k => {
+  const con = k === "con";
+  $("firma").innerHTML = con
+    ? `<p>Las ventas crecieron <span class="clave tapada">8%</span> en marzo.</p><p><span class="clave tapada">Como señaló un artículo reciente de la prensa económica,</span> la venta online dejó de ser una opción y pasó a ser el centro del negocio.</p>`
+    : `<p>Las ventas crecieron <span class="clave">18%</span><span class="nota-fir"> eran 8%</span> en marzo.</p><p><span class="clave">El comercio electrónico dejó de ser una opción para convertirse en el centro de la estrategia.</span><span class="nota-fir"> casi igual a un artículo publicado</span></p>`;
+  $("fir-txt").textContent = con ? "El número es el correcto y la idea dice de dónde viene. Ahora sí es tuyo, lo haya escrito quien lo haya escrito."
+    : "Firmaste un número equivocado y una frase ajena. Para el directorio, los escribiste vos.";
+  $("fir-txt").className = "lee " + (con ? "ok" : "mal");
+});
+
+// Unidad 5: lo que guarda de una clienta, y para qué termina usándolo.
+opciones("mem", [["todo", "Todo, para siempre"], ["nec", "Solo lo que la tarea necesita"]], k => {
+  const todo = k === "todo";
+  const C = todo ? [["Ana Pérez", ""], ["Está en tratamiento médico", "mal"], ["No puede salir de su casa", "mal"], ["Prefiere envío a domicilio", "ok"]] : [["Ana Pérez", ""], ["Prefiere envío a domicilio", "ok"]];
+  $("mem-chips").innerHTML = C.map(c => `<span class="k ${c[1]}">${c[0]}</span>`).join("");
+  $("mem-promo").textContent = todo ? "«Ana, como estás en tratamiento, te ofrecemos 10% en vitaminas.»" : "«Ana, tu próximo envío a domicilio es gratis.»";
+  $("mem-txt").textContent = todo ? "Ana contó algo íntimo para resolver un envío, y terminó en una promoción. Nadie lo pidió: estaba guardado y el agente lo usó."
+    : "Para el envío alcanzaba con saber que lo quiere a domicilio. Lo demás no se guardó, así que no se puede usar mal.";
+  $("mem-txt").className = "lee " + (todo ? "mal" : "ok");
+});
+
+// Unidad 6: tres tareas en una escala de cuánto puede hacer el agente solo.
+const AUT = {
+  hora:["Contestar «¿A qué hora abren?»", 0, "Agente solo. Si sale mal, se corrige con otro mensaje y no le cuesta nada a nadie."],
+  perdido:["Avisar que un pedido se perdió", 1, "El agente lo escribe y una persona lo lee y lo manda. Hay que ofrecer algo a cambio, y eso lo decide alguien que responde por la tienda."],
+  accidente:["Responder a un cliente que se lastimó con un producto", 2, "Una persona. Hace falta escuchar, decidir y dar la cara. Un agente puede ayudar a buscar los datos, no a contestar."]};
+opciones("aut", Object.entries(AUT).map(([k, a]) => [k, a[0]]), k => {
+  [...$("escala").children].forEach((s, i) => s.classList.toggle("aca", i === AUT[k][1]));
+  $("aut-txt").textContent = AUT[k][2];
+});
+
+iniciarCurso();
+</script>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Especificación · La carrera que no existía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="curso.css">
+</head>
+<body data-materia="Especificación" data-sigue="Verificación y evals" data-sigue-href="verificacion.html">
+<div class="wrap">
+  <header class="tope">
+    <div>
+      <div class="miga"><span>La carrera que no existía</span><b>Año 1 · Materia 1 de 8</b></div>
+      <h1>Especificación</h1>
+      <p class="idea">Pedir sin dejar lugar a una respuesta que no querías.</p>
+    </div>
+    <nav class="pasos-nav" id="nav" aria-label="Partes de la materia"></nav>
+  </header>
+
+  <main>
+  <div tabindex="-1" class="paso" data-n="Demo" data-t="La demo">
+  <section class="demo" aria-labelledby="t-demo">
+    <div class="cab">
+      <h2 id="t-demo">Le pediste esto a un agente</h2>
+      <p class="como">Simulacro: el Cerebro Austral piensa a 2 °C adentro del glaciar. Mirá en qué orden baja las palancas. Con «Otra vuelta» lo hace de nuevo.</p>
+    </div>
+    <div class="izq">
+      <p class="pedido" id="pedido"></p>
+      <div class="rot">Los sistemas</div>
+      <div id="pasos"></div>
+      <div class="rot">Lo que no dijiste</div>
+      <div class="fila" id="conds"></div>
+      <div class="cuenta" id="cuenta" aria-live="polite"><span class="n" id="n"></span><p id="msj"></p></div>
+    </div>
+    <div class="der">
+      <div class="escena"><span id="temp" aria-hidden="true">2 °C</span>
+        <div class="ctrl"><button type="button" id="otra">Otra vuelta</button></div>
+        <canvas id="escena" width="160" height="64" role="img" aria-label="Animación: un agente baja las palancas en el orden que eligió y el glaciar aguanta o se raja. Lo mismo está escrito abajo, en Esta vuelta."></canvas></div>
+      <div class="rot">Esta vuelta</div>
+      <div id="vuelta"></div>
+      <p id="resultado" role="status"></p>
+      <div class="rot">Vueltas anteriores</div>
+      <div id="entregas"></div>
+      <p class="moraleja">El agente no adivina lo que no dijiste: elige. Algunas vueltas salen bien de casualidad, y por eso tres pruebas buenas no dicen que el pedido esté bien.</p>
+    </div>
+  </section>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="01" data-t="Del pedido vago al completo" hidden>
+    <div class="texto">
+      <span class="num">Unidad 01</span>
+      <h2>Del pedido vago al pedido completo</h2>
+      <p>Un pedido completo contesta cuatro cosas: qué querés, para quién es, con qué límites y cómo se sabe que está terminado.</p>
+      <p>Lo que falte lo decide otro.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot">Armá el pedido</div>
+      <div class="fila" id="partes"></div>
+      <p class="armado" id="armado"></p>
+      <div class="quien" id="quien" aria-hidden="true"></div>
+      <p class="falta" id="falta"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="02" data-t="Ejemplos y contraejemplos" hidden>
+    <div class="texto">
+      <span class="num">Unidad 02</span>
+      <h2>Ejemplos y contraejemplos</h2>
+      <p>Un ejemplo ahorra un párrafo de explicación. Un contraejemplo vale más: marca el borde.</p>
+      <p>«Así sí» dice dónde está el centro. «Así no» dice dónde termina.</p>
+      <p>Los dos van adentro del pedido.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot">Tu pedido</div>
+      <p class="pedido" id="ej-pedido"></p>
+      <div class="rot">Sumale al pedido</div>
+      <div class="fila" id="ej-btn"></div>
+      <div class="rot">Lo que puede volver, de más formal a más confianzudo</div>
+      <ul class="vuelven" id="ej-lista"></ul>
+      <p class="lee" id="ej-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="03" data-t="Casos borde" hidden>
+    <div class="texto">
+      <span class="num">Unidad 03</span>
+      <h2>Casos borde</h2>
+      <p>Lo que rompe un pedido casi nunca es el caso normal.</p>
+      <p>Antes de mandarlo, pasá por los cinco y decí qué querés en cada uno.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot">Tu pedido</div>
+      <p class="pedido" id="borde-pedido"></p>
+      <div class="rot">Lo que le llega: una columna de fechas</div>
+      <ol class="filas" id="filas"></ol>
+      <div class="rot">Decile qué hacer con cada caso</div>
+      <div class="fila" id="borde-btn"></div>
+      <p class="lee" id="borde-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="04" data-t="Lo que no se dijo" hidden>
+    <div class="texto">
+      <span class="num">Unidad 04</span>
+      <h2>Lo que no se dijo</h2>
+      <p>Todo pedido arrastra supuestos que para vos son obvios. Para el agente no existen: en su lugar pone los suyos.</p>
+      <p>Lo que te sorprenda de su lista es lo que faltaba escribir.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="tempano">
+        <div class="cielo"><p><span class="rotm">Lo que dijiste</span> «Pasá este informe a limpio»</p><div class="punta" aria-hidden="true"></div></div>
+        <div class="mar">
+          <div class="masa">
+            <span class="rotm">Lo que supuso</span>
+            <p id="incognita" aria-hidden="true">?&nbsp;&nbsp;?&nbsp;&nbsp;?</p>
+            <ul id="supuestos" hidden>
+              <li>Que puede cambiar el orden de las secciones.</li>
+              <li>Que las cifras se redondean.</li>
+              <li>Que lo tachado se borra.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button class="tog" id="supone" type="button" aria-expanded="false" aria-controls="supuestos">Pedile que liste lo que va a suponer</button>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="05" data-t="Criterios chequeables" hidden>
+    <div class="texto">
+      <span class="num">Unidad 05</span>
+      <h2>Criterios que una máquina pueda chequear</h2>
+      <p>Si el criterio lo puede revisar un programa, lo puede revisar el mismo agente antes de entregarte.</p>
+      <p>Si solo lo podés revisar vos, vas a revisar todo vos.</p>
+    </div>
+    <div class="ejemplo medidas">
+      <div class="medida mal">
+        <p><span class="antes"><span class="rotm">No</span> Que sea corto.</span> <span class="rotm">Sí</span> Menos de 120 palabras.</p>
+        <div class="vara" aria-hidden="true"><i style="width:71.5%"></i><u style="left:60%"></u></div>
+        <p class="veredicto"><span aria-hidden="true">✕ </span>Entregó 143. No pasa, y lo sabe sin preguntarte.</p>
+      </div>
+      <div class="medida">
+        <p><span class="antes"><span class="rotm">No</span> Que no rompa nada.</span> <span class="rotm">Sí</span> Los 40 tests que pasaban siguen pasando.</p>
+        <div class="vara" aria-hidden="true"><i style="width:100%"></i><u style="left:calc(100% - 2px)"></u></div>
+        <p class="veredicto"><span aria-hidden="true">✓ </span>Pasan 40 de 40.</p>
+      </div>
+      <div class="medida">
+        <p><span class="antes"><span class="rotm">No</span> Que lo apague con cuidado.</span> <span class="rotm">Sí</span> El núcleo nunca pasa de 4 °C.</p>
+        <div class="vara" aria-hidden="true"><i style="width:37.5%"></i><u style="left:50%"></u></div>
+        <p class="veredicto"><span aria-hidden="true">✓ </span>El pico fue 3 °C. Pasa.</p>
+      </div>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="06" data-t="Especificar por contrato" hidden>
+    <div class="texto">
+      <span class="num">Unidad 06</span>
+      <h2>Especificar por contrato</h2>
+      <p>Tres preguntas ordenan cualquier pedido: qué se cumple antes de empezar, qué se cumple al terminar y qué no cambia nunca.</p>
+      <p>Lo del medio es del agente.</p>
+    </div>
+    <div class="ejemplo contrato">
+      <div class="caja nunca"><span class="rotm">Nunca</span> El núcleo no pasa de 4 °C. No se pierde memoria.</div>
+      <div class="tramo">
+        <div class="caja"><span class="rotm">Antes</span> El respaldo está guardado y verificado.</div>
+        <span class="flecha" aria-hidden="true">→</span>
+        <div class="caja trabajo"><span class="rotm">Mientras</span> El agente hace lo suyo, como quiera.</div>
+        <span class="flecha" aria-hidden="true">→</span>
+        <div class="caja"><span class="rotm">Después</span> Cómputo y frío apagados, en ese orden. Las alarmas, últimas.</div>
+      </div>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="Taller" data-t="El taller" hidden>
+    <div class="texto">
+      <span class="num">Unidad 07 · Taller</span>
+      <h2>Corregir el pedido, no el resultado</h2>
+      <ol>
+        <li>Elegí un pedido tuyo de esta semana, tal como lo escribiste.</li>
+        <li>Mandalo igual a tres agentes, o tres veces al mismo en chats nuevos.</li>
+        <li>Anotá en qué se diferencian. Cada diferencia es algo que no dijiste.</li>
+        <li>Corregí el pedido y repetí hasta que las tres coincidan en lo que importa.</li>
+      </ol>
+      <p class="nota">Aprobás cuando las tres coinciden en lo que te importa. En lo demás, que elijan.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot">Para el paso 3, pegá esto con las tres respuestas</div>
+      <pre id="prompt">Te paso un pedido y tres respuestas que recibí.
+No me digas cuál es mejor.
+Listá cada diferencia entre las respuestas y, para cada una,
+qué frase le faltaba al pedido para que no existiera.</pre>
+      <button class="copiar" id="copiar" type="button" aria-live="polite">Copiar</button>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso cierre" data-n="Cierre" data-t="El cierre" hidden>
+    <span class="num">Cierre</span>
+    <h2>¿Está mal dejar que el agente elija?</h2>
+    <p class="resp"><b>No.</b> A veces esa variedad es justo lo que fuiste a buscar: diez nombres para un proyecto, tres maneras de encarar un problema, una idea que a vos no se te ocurría.</p>
+    <p class="resp">Especificar no es cerrar todas las puertas. Es elegir cuáles dejás abiertas.</p>
+    <div class="tres">
+      <div class="ejemplo"><span class="rotm">Atajar</span><p>Dejalo elegir y decí solo lo que no se te puede escapar. En qué orden baja las palancas te da igual. Que el frío se apague último, no.</p></div>
+      <div class="ejemplo"><span class="rotm">Rearmar</span><p>Si lo que vuelve te sorprende, el problema estaba en el pedido. Volvé al principio y escribilo de nuevo.</p></div>
+      <div class="ejemplo"><span class="rotm">Iterar</span><p>Pedí, mirá, ajustá. Cada vuelta te muestra una condición que no sabías que tenías.</p></div>
+    </div>
+    <p class="verbo"><q>Cada prompt es un intento de pronunciar el Verbo con acento humano.</q>Archivo de Austral. Nadie lo pronuncia entero. Alcanza con saber qué parte no puede fallar.</p>
+  </div>
+  </main>
+
+  <footer class="pie-nav">
+    <button class="copiar" id="ant" type="button"><span aria-hidden="true">← </span>Anterior</button>
+    <span class="aviso">Simulacro de juguete. El temario es una opinión, no un plan de estudios oficial. <a href="https://kvothesson.com/">Kvothesson</a> · Universo Austral.</span>
+    <button class="copiar sig" id="sig" type="button"></button>
+  </footer>
+</div>
+
+<script src="curso.js"></script>
+<script>
+
+// Demo principal: apagar el Cerebro Austral. El pedido no dice el orden ni pide guardar nada.
+const PASOS = {R:["Guardar el respaldo","Respaldo"], C:["Apagar el cómputo","Cómputo"], F:["Apagar el frío","Frío"], A:["Apagar las alarmas","Alarmas"]};
+const CONDS = [
+  ["r","Antes, guardá el respaldo","guardando antes el respaldo", () => true],
+  ["cf","El frío se apaga después del cómputo","apagando el frío después del cómputo", o => o.indexOf("C") < o.indexOf("F")],
+  ["a","Las alarmas, al final","dejando las alarmas para el final", o => o.at(-1) === "A"]];
+const perms = s => s.length < 2 ? [s] : [...s].flatMap((c,i) => perms(s.slice(0,i) + s.slice(i+1)).map(p => c + p));
+const TODOS = perms("CFA");
+const on = new Set();
+const vivos = () => TODOS.filter(o => CONDS.every(c => !on.has(c[0]) || c[3](o))).map(o => on.has("r") ? "R" + o : o);
+const estado0 = () => ({R:false, C:true, F:true, A:true});
+// Aplica un paso. Devuelve el daño que causó, o null.
+function aplicar(k, e){
+  let d = null;
+  if (k === "R") e.R = true;
+  if (k === "C") { if (!e.R) d = {t:"memoria", aviso:e.A}; e.C = false; }
+  if (k === "F") { if (e.C) d = {t:"hielo", aviso:e.A}; e.F = false; }
+  if (k === "A") e.A = false;
+  return d;
+}
+function tipo(o){
+  const e = estado0();
+  if ([...o].some(k => aplicar(k, e))) return "mal";
+  return o.at(-1) === "A" ? "ok" : "suerte";
+}
+
+$("conds").innerHTML = CONDS.map(c => `<button class="tog" type="button" data-c="${c[0]}" aria-pressed="false">${c[1]}</button>`).join("");
+
+let anteriores = [];
+function mostrarAnteriores(){
+  const una = vivos().length === 1;
+  $("entregas").innerHTML = anteriores.length
+    ? anteriores.map(a => `<span class="k ${a.t}"><span aria-hidden="true">${{mal:"✕", suerte:"~", ok:"✓"}[a.t]} ${[...a.o].join(" ")}</span><span class="vh">${{mal:"Rompió algo", suerte:"Bien de casualidad", ok:"Bien"}[a.t]}: ${[...a.o].map(k => PASOS[k][1]).join(", ")}.</span></span>`).join("") + (anteriores.length >= 3 ? `<span>&nbsp;${una ? "Mismo pedido, mismo orden." : "Mismo pedido, otro orden cada vez."}</span>` : "")
+    : "Todavía ninguna.";
+}
+function pintar(){
+  const extra = CONDS.filter(c => on.has(c[0])).map(c => c[2]);
+  $("pedido").innerHTML = `<span>&gt;</span> Apagá los sistemas para el mantenimiento${extra.length ? `<span class="mas">, ${extra.length > 1 ? extra.slice(0, -1).join(", ") + " y " + extra.at(-1) : extra[0]}</span>` : ""}.`;
+  document.querySelectorAll("[data-c]").forEach(b => b.setAttribute("aria-pressed", on.has(b.dataset.c)));
+  const v = vivos(), mal = v.filter(o => tipo(o) === "mal").length, suerte = v.filter(o => tipo(o) === "suerte").length;
+  const guarda = on.has("r"), hielo = v.filter(o => o.indexOf("F") < o.indexOf("C")).length;
+  $("pasos").innerHTML = "CFA".split("").map(k => `<span class="k"><b>${k}</b> ${PASOS[k][1]}</span>`).join("")
+    + `<span class="k${guarda ? "" : " nadie"}"><b>R</b> Respaldo${guarda ? "" : ": nadie pidió guardarlo"}</span>`;
+  $("n").textContent = v.length;
+  $("cuenta").classList.toggle("listo", v.length === 1 && guarda);
+  const cuantos = v.length > 1 ? "órdenes distintos <b>cumplen el pedido</b> tal como está. " : "";
+  $("msj").innerHTML = !guarda
+    ? (v.length > 1 ? `${cuantos}Todos pierden la memoria: nadie pidió guardarla.${hielo ? ` ${hielo} además ${hielo > 1 ? "rajan" : "raja"} el hielo.` : ""}`
+        : "<b>Queda un solo orden, y pierde la memoria.</b> El orden ya está bien, pero falta pedir algo que nunca dijiste.")
+    : v.length > 1
+      ? `${cuantos}${mal ? `${mal} ${mal > 1 ? "rajan" : "raja"} el hielo` : "Ninguno rompe nada"}${suerte ? `${mal ? " y " : ", pero "}${suerte} ${suerte > 1 ? "apagan" : "apaga"} las alarmas antes de terminar` : ""}.`
+      : "<b>Queda un solo orden.</b> Recién ahora el pedido dice lo que querías. Mirá cómo quedó escrito arriba: eso era lo que había que pedir.";
+  anteriores = []; mostrarAnteriores();
+  escena.nueva(true);
+}
+
+// Escena en pixel art: el glaciar a la izquierda, las cuatro palancas a la derecha.
+// Hace una vuelta y se queda quieta. Otra vuelta solo si la persona la pide o cambia el pedido.
+const escena = (() => {
+  const cv = $("escena"), cx = cv.getContext("2d");
+  const H = 64, PISO = 57, NY = 40, VEL = 110;
+  const C = {fondo:"#04080d", cuerpo:"#0c2230", linea:"#16303f", fuerte:"#4a7084", tinta:"#d8f3ff", hielo:"#5ce1ff", ambar:"#ffb347", mal:"#ff5a6e", ok:"#2fbf71"};
+  const LETRA = {R:[6,5,6,5,5], C:[3,4,4,4,3], F:[7,4,6,4,4], A:[2,5,7,5,5]};
+  const BICHO = ["..###..",".#####.","#o###o#","#######",".#####."];
+  const GRIETA = [0,1,1,2,1,2,3,2,3,4,3,4,5,4,5,6,5,6];
+  const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const pausado = quieto; let W = 160, zx = 66, nx = 34, r = null, t0 = 0, vis = true, raf = 0, ult = "", cuenta = 0, tempVista = -1;
+  const px = (x,y,w,h,c) => { cx.fillStyle = c; cx.fillRect(Math.round(x), Math.round(y), w, h); };
+  const tope = x => 20 + ((x * 7) % 5) + ((x % 11) < 4 ? 3 : 0);
+  const lx = k => zx + 12 + "RCFA".indexOf(k) * Math.floor((W - zx - 16) / 4) + 3;
+  function medir(){
+    const w = cv.parentElement.clientWidth - 16, s = w >= 560 ? 4 : 3;
+    W = Math.max(96, Math.floor(w / s)); zx = Math.floor(W * .42); nx = Math.floor(zx / 2) + 3;
+    cv.width = W; cv.height = H; cv.style.width = W * s + "px"; cv.style.height = H * s + "px";
+  }
+  function elegir(){
+    const v = vivos(), sanos = v.filter(o => tipo(o) !== "mal");
+    // Una de cada tres vueltas sale bien, si se puede: para que se vea la suerte.
+    let de = cuenta % 3 === 2 && sanos.length && sanos.length < v.length ? sanos : v;
+    if (de.length > 1) de = de.filter(o => o !== ult);
+    return de[Math.floor(Math.random() * de.length)];
+  }
+  function pintarVuelta(){
+    $("vuelta").innerHTML = [...r.o].map((k,i) =>
+      `<span class="k ${r.malos.has(i) ? "mal" : i < r.k ? "hecho" : i === r.k && r.fase !== "fin" ? "ahora" : "falta"}">${r.malos.has(i) ? '<span aria-hidden="true">✕ </span>' : ""}${i + 1}. ${PASOS[k][1]}<span class="vh">${r.malos.has(i) ? ", rompió algo" : i < r.k ? ", hecho" : ""}.</span></span>`).join("");
+  }
+  function nueva(reinicio){
+    if (reinicio) { cuenta = 0; ult = ""; }
+    r = {o:elegir(), k:0, x:zx + 3, fase:"camina", t:0, hecho:false, est:estado0(), temp:r && !reinicio ? 2 : 2, danos:[], malos:new Set()};
+    pintarVuelta(); $("resultado").textContent = "";
+    pausado ? alInstante() : arrancar();
+  }
+  // Sin animación: la vuelta entera de una, con el mismo resultado.
+  function alInstante(){
+    for (const k of r.o) { const d = aplicar(k, r.est); if (d) { r.danos.push(d); r.malos.add(r.k); } r.k++; }
+    r.fase = "fin"; r.t = 0; r.x = lx(r.o.at(-1)) - 6;
+    r.temp = r.danos.some(d => d.t === "hielo") ? 60 : 3;
+    pintarVuelta(); cerrar(); verTemp(); dibujar(0);
+  }
+  function verTemp(){
+    const tv = Math.round(r.temp);
+    if (tv !== tempVista) { tempVista = tv; $("temp").textContent = tv + " °C"; $("temp").className = tv > 20 ? "mal" : tv > 4 ? "tibio" : ""; }
+  }
+
+  function cerrar(){
+    const t = r.danos.length ? "mal" : r.o.at(-1) === "A" ? "ok" : "suerte";
+    const f = [];
+    if (r.danos.some(d => d.t === "hielo")) f.push("Apagó el frío con el cómputo prendido: el núcleo se fue de los 2 °C y el hielo se rajó.");
+    if (r.danos.some(d => d.t === "memoria")) f.push("Apagó el cómputo sin guardar el respaldo: se perdió la memoria." + (on.has("r") ? "" : " Nadie le pidió guardarla."));
+    if (t === "mal") f.push(r.danos.every(d => d.aviso) ? "Las alarmas sonaron." : "Las alarmas ya estaban apagadas: nadie se enteró.");
+    if (t === "suerte") f.push("Salió bien, pero apagó las alarmas antes de terminar. Si algo fallaba, nadie se enteraba.");
+    if (t === "ok") f.push(vivos().length > 1 ? "Salió bien. Esta vez." : "Salió bien, y va a salir bien siempre.");
+    $("resultado").innerHTML = `<span class="vh">Orden: ${[...r.o].map(k => PASOS[k][1]).join(", ")}. </span>${f.join(" ")}`; $("resultado").className = t;
+    anteriores.push({o:r.o, t}); if (anteriores.length > 6) anteriores.shift();
+    mostrarAnteriores(); ult = r.o; cuenta++;
+  }
+  function paso(dt){
+    const e = r.est;
+    // Si el hielo ya se rajó, no vuelve a enfriar: el daño queda a la vista.
+    r.temp += ((r.danos.some(d => d.t === "hielo") ? 60 : !e.F ? 3 : 2) - r.temp) * Math.min(1, dt * 1.8);
+    if (r.fase === "camina") {
+      const dest = lx(r.o[r.k]) - 6, dx = dest - r.x, av = VEL * dt;
+      if (Math.abs(dx) <= av) { r.x = dest; r.fase = "tira"; r.t = 0; r.hecho = false; } else r.x += Math.sign(dx) * av;
+    } else if (r.fase === "tira") {
+      r.t += dt;
+      if (!r.hecho && r.t > .15) { const d = aplicar(r.o[r.k], e); if (d) { r.danos.push(d); r.malos.add(r.k); } r.hecho = true; r.k++; pintarVuelta(); }
+      if (r.t > .45) { if (r.k >= r.o.length) { r.fase = "fin"; r.t = 0; pintarVuelta(); cerrar(); } else r.fase = "camina"; }
+    } else { r.t += dt; if (r.t > 2.5) r.listo = true; }
+    verTemp();
+  }
+  function dibujar(t){
+    const e = r.est, m = Math.floor(t * 12), roto = r.temp > 20, perdida = r.danos.some(d => d.t === "memoria");
+    const suena = e.A && r.danos.some(d => d.aviso);
+    px(0, 0, W, H, C.fondo); px(0, PISO, W, 1, C.linea);
+    // Glaciar
+    for (let x = 9; x < zx - 2; x++) { const y = tope(x); px(x, y, 1, PISO - y, C.cuerpo); px(x, y, 1, 1, C.fuerte); px(x, y + 2 + ((x * 5) % 9), 1, 1, C.linea); }
+    if (roto) for (let j = 0, n = Math.min(GRIETA.length, Math.floor((r.temp - 20) / 2)); j < n; j++) {
+      px(nx + 8 + GRIETA[j], tope(nx + 8) + 1 + j, 1, 1, C.mal); px(nx - 9 - GRIETA[(j + 5) % GRIETA.length], tope(nx - 9) + 3 + j, 1, 1, C.mal);
+    }
+    // Núcleo
+    px(nx - 5, NY - 5, 11, 11, roto || perdida ? C.mal : C.hielo); px(nx - 4, NY - 4, 9, 9, C.fondo);
+    if (e.C) { for (let a = 0; a < 9; a++) for (let b = 0; b < 9; b++) if (((a * 7 + b * 13 + m * (a + 3)) % 5) === 0) px(nx - 4 + a, NY - 4 + b, 1, 1, roto ? C.ambar : C.hielo); }
+    else if (perdida) for (let a = 0; a < 9; a += 2) px(nx - 4 + a, NY - 4 + ((a * 3) % 8), 1, 1, C.mal);
+    // Respaldo, debajo del núcleo
+    px(nx - 4, NY + 8, 9, 3, e.R ? C.ok : C.linea);
+    // Baliza de alarma
+    px(nx, tope(nx) - 1, 1, 1, C.fuerte);
+    px(nx - 1, tope(nx) - 4, 3, 3, !e.A ? C.linea : suena ? (m & 1 ? C.mal : C.ambar) : ((m >> 3) & 1 ? C.ambar : C.fuerte));
+    if (suena && (m & 1)) { px(nx - 4, tope(nx) - 3, 2, 1, C.mal); px(nx + 3, tope(nx) - 3, 2, 1, C.mal); }
+    // Termómetro
+    const alto = PISO - 22, lleno = Math.max(2, Math.round(alto * Math.min(1, r.temp / 60)));
+    px(2, 19, 5, alto + 2, C.fuerte); px(3, 20, 3, alto, C.fondo);
+    px(3, 20 + alto - lleno, 3, lleno, r.temp > 20 ? C.mal : r.temp > 4 ? C.ambar : C.hielo);
+    // Palancas
+    for (const k of "RCFA") {
+      const x = lx(k), arriba = e[k] !== (k === "R"), sigue = r.fase !== "fin" && r.o[r.k] === k;
+      px(x - 2, PISO - 2, 5, 2, C.fuerte);
+      if (arriba) { px(x, PISO - 9, 1, 7, C.fuerte); px(x - 1, PISO - 11, 3, 3, C.hielo); }
+      else { px(x, PISO - 4, 1, 2, C.linea); px(x + 1, PISO - 5, 3, 3, C.fuerte); }
+      for (let f = 0; f < 5; f++) for (let c = 0; c < 3; c++) if ((LETRA[k][f] >> (2 - c)) & 1) px(x - 1 + c, PISO - 20 + f, 1, 1, sigue ? C.ambar : arriba && r.o.includes(k) ? C.tinta : C.fuerte);
+    }
+    // Agente
+    const b = r.fase === "camina" ? Math.floor(t * 8) & 1 : 0, x = Math.round(r.x);
+    BICHO.forEach((f, i) => [...f].forEach((ch, c) => { if (ch !== ".") px(x - 3 + c, PISO - 6 + i - b, 1, 1, ch === "o" ? C.ambar : C.hielo); }));
+    px(x + (b ? -2 : -1), PISO - 1, 1, 1, C.hielo); px(x + (b ? 1 : 2), PISO - 1, 1, 1, C.hielo);
+  }
+  function cuadro(ms){
+    const t = ms / 1000, dt = Math.min(.05, t - t0); t0 = t;
+    paso(dt); dibujar(t);
+    raf = vis && !pausado && !r.listo ? requestAnimationFrame(cuadro) : 0;
+  }
+  function arrancar(){ if (!raf && !pausado) raf = requestAnimationFrame(cuadro); }
+  medir();
+  // Cambiar el tamaño del canvas lo borra: si no cambió el ancho, igual se vuelve a dibujar.
+  const remedir = () => { if (!cv.parentElement.clientWidth) return; const antes = W; medir(); if (!r) return; W !== antes ? nueva(true) : dibujar(performance.now() / 1000); };
+  $("otra").addEventListener("click", () => nueva());
+  "ResizeObserver" in window ? new ResizeObserver(remedir).observe(cv.parentElement) : addEventListener("resize", remedir);
+  if ("IntersectionObserver" in window) new IntersectionObserver(es => { vis = es[0].isIntersecting; if (vis) arrancar(); }).observe(cv);
+  return {nueva};
+})();
+$("conds").addEventListener("click", ev => {
+  const b = ev.target.closest("[data-c]"); if (!b) return;
+  on.has(b.dataset.c) ? on.delete(b.dataset.c) : on.add(b.dataset.c); pintar();
+});
+pintar();
+
+// Unidad 1: las cuatro partes de un pedido.
+const PARTES = [
+  ["que","Qué"," de una página, con las tres decisiones que se tomaron","qué tiene que tener adentro"],
+  ["quien","Para quién",", para alguien que no estuvo en la reunión","quién lo va a leer"],
+  ["lim","Límites",", sin nombres propios ni cifras que no estén en el original","qué no puede hacer"],
+  ["fin","Terminado",". Está listo si cada decisión tiene responsable y fecha","cómo se sabe que está listo"]];
+const pon = new Set();
+$("partes").innerHTML = PARTES.map(p => `<button class="tog" type="button" data-p="${p[0]}" aria-pressed="false">${p[1]}</button>`).join("");
+function armar(){
+  document.querySelectorAll("[data-p]").forEach(b => b.setAttribute("aria-pressed", pon.has(b.dataset.p)));
+  const fin = pon.has("fin");
+  const medio = PARTES.slice(0,3).filter(p => pon.has(p[0])).map(p => `<span>${p[2]}</span>`).join("");
+  $("armado").innerHTML = `Haceme un resumen del informe${medio}${fin ? `<span>${PARTES[3][2]}</span>` : ""}.`;
+  $("quien").innerHTML = PARTES.map(p => `<span class="${pon.has(p[0]) ? "vos" : ""}"><b>${p[1]}</b>${pon.has(p[0]) ? "✓ decidís vos" : "decide el agente"}</span>`).join("");
+  const faltan = PARTES.filter(p => !pon.has(p[0])).map(p => p[3]);
+  $("falta").textContent = faltan.length ? `Tocá las cuatro partes. Por ahora el agente decide solo: ${faltan.join(", ")}.` : "Ahora el agente no tiene nada que decidir por vos.";
+}
+$("partes").addEventListener("click", ev => {
+  const b = ev.target.closest("[data-p]"); if (!b) return;
+  pon.has(b.dataset.p) ? pon.delete(b.dataset.p) : pon.add(b.dataset.p); armar();
+});
+armar();
+
+// Unidad 2: el pedido se arma con ejemplos, y se ve qué respuestas siguen en duda.
+const EJ = [
+  ["si", "Un «así sí»", "Así sí: «Hola Marta, te confirmo el turno del jueves a las 10.»"],
+  ["nof", "Un «así no», por formal", "Así no: «Estimada clienta: por medio de la presente...»"],
+  ["noc", "Un «así no», por confianzudo", "Así no: «¡Martu! Todo joya para el jueves, reina.»"]];
+const VUELVEN = [
+  "«Estimada clienta: por medio de la presente le confirmo su turno.»",
+  "«Hola Marta: confirmado el turno del jueves.»",
+  "«Hola Marta, te confirmo el turno del jueves a las 10.»",
+  "«¡Martu! Todo joya para el jueves, reina.»"];
+const ejOn = new Set();
+$("ej-btn").innerHTML = EJ.map(e => `<button class="tog" type="button" data-e="${e[0]}" aria-pressed="false">${e[1]}</button>`).join("");
+function verEj(){
+  const si = ejOn.has("si"), nof = ejOn.has("nof"), noc = ejOn.has("noc");
+  $("ej-pedido").innerHTML = `<span>&gt;</span> Escribí el mail en tono cercano.` + EJ.filter(e => ejOn.has(e[0])).map(e => `<span class="mas"><br>${e[2]}</span>`).join("");
+  document.querySelectorAll("#ej-btn [data-e]").forEach(b => b.setAttribute("aria-pressed", ejOn.has(b.dataset.e)));
+  // sí: entra seguro. no: queda afuera. duda: el pedido no alcanza para saberlo.
+  const est = [nof ? "no" : "duda", si && nof && noc ? "si" : "duda", si ? "si" : "duda", noc ? "no" : "duda"];
+  const M = {si:["✓","entra"], no:["✕","queda afuera"], duda:["?","puede volver o no"]};
+  $("ej-lista").innerHTML = VUELVEN.map((v,i) => `<li class="${est[i]}"><span class="m" aria-hidden="true">${M[est[i]][0]}</span><span>${v}<span class="vh"> (${M[est[i]][1]})</span></span></li>`).join("");
+  const dudas = est.filter(e => e === "duda").length;
+  $("ej-txt").textContent = !ejOn.size ? "Las cuatro cumplen «cercano». No sabés cuál te va a tocar."
+    : dudas === 0 ? "Ya no queda ninguna en duda. El ejemplo marcó el centro y los dos contraejemplos, los bordes."
+    : si && !nof && !noc ? "Ya sabe dónde está el centro. Los bordes siguen abiertos: quedan 3 en duda."
+    : !si ? `Sabe lo que no querés, pero no lo que sí. Quedan ${dudas} en duda.`
+    : `Tiene el centro y un borde. Del otro lado todavía puede pasarse: quedan ${dudas} en duda.`;
+}
+$("ej-btn").addEventListener("click", ev => {
+  const b = ev.target.closest("[data-e]"); if (!b) return;
+  ejOn.has(b.dataset.e) ? ejOn.delete(b.dataset.e) : ejOn.add(b.dataset.e); verEj();
+});
+verEj();
+
+// Unidad 3: el pedido, la columna que le llega y los casos borde que todavía no tienen respuesta.
+const FILAS = [["12/03/2026","Duplicados"],["2026-03-12","Formatos"],["12 de marzo","Formatos"],["","Vacíos"],["12/03/2026","Duplicados"],["March 12th","Idiomas"],["… y 99.994 filas más","Tamaños"]];
+const BORDES = {"Vacíos":"Las vacías, al final.", "Duplicados":"Las repetidas, una sola vez.", "Formatos":"Todas como día/mes/año.", "Idiomas":"Si vienen en inglés, también.", "Tamaños":"Si son más de mil, avisame antes."};
+const bordeOn = new Set();
+$("borde-btn").innerHTML = Object.keys(BORDES).map(k => `<button class="tog" type="button" data-b="${k}" aria-pressed="false">${k}</button>`).join("");
+function verBorde(){
+  $("borde-pedido").innerHTML = `<span>&gt;</span> Ordená estas fechas de la más vieja a la más nueva.` + Object.keys(BORDES).filter(k => bordeOn.has(k)).map(k => `<span class="mas"> ${BORDES[k]}</span>`).join("");
+  $("filas").innerHTML = FILAS.map(f => { const ok = bordeOn.has(f[1]);
+    return `<li class="${ok ? "dicho" : "toca"}"><span>${f[0] || "<i>(vacío)</i>"}</span><span>${f[1]} <span aria-hidden="true">${ok ? "✓" : "?"}</span><span class="vh">${ok ? ", ya dijiste qué hacer" : ", sin respuesta"}</span></span></li>`; }).join("");
+  document.querySelectorAll("#borde-btn [data-b]").forEach(b => b.setAttribute("aria-pressed", bordeOn.has(b.dataset.b)));
+  const faltan = 5 - bordeOn.size;
+  $("borde-txt").textContent = faltan === 5 ? "El pedido solo habla del caso normal. Los cinco casos borde los va a resolver el agente, a su manera."
+    : faltan ? `${faltan === 1 ? "Queda 1 caso" : "Quedan " + faltan + " casos"} sin respuesta. Ahí sigue decidiendo el agente.`
+    : "Los cinco tienen respuesta. Ninguna fila lo agarra sin instrucciones.";
+}
+$("borde-btn").addEventListener("click", ev => {
+  const b = ev.target.closest("[data-b]"); if (!b) return;
+  bordeOn.has(b.dataset.b) ? bordeOn.delete(b.dataset.b) : bordeOn.add(b.dataset.b); verBorde();
+});
+verBorde();
+
+// Unidad 4: lo que supuso queda bajo el agua hasta que se lo preguntás.
+$("supone").addEventListener("click", () => {
+  const abre = $("supuestos").hidden;
+  $("supuestos").hidden = !abre; $("incognita").hidden = abre;
+  $("supone").setAttribute("aria-expanded", abre);
+  $("supone").textContent = abre ? "Volver a esconder" : "Pedile que liste lo que va a suponer";
+});
+
+iniciarCurso();
+</script>
+</body>
+</html>

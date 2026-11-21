@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comportamiento de modelos · La carrera que no existía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="curso.css">
+</head>
+<body data-materia="Comportamiento de modelos" data-sigue="Economía del cómputo" data-sigue-href="economia.html">
+<div class="wrap">
+  <header class="tope">
+    <div>
+      <div class="miga"><span>La carrera que no existía</span><b>Año 3 · Materia 5 de 8</b></div>
+      <h1>Comportamiento de modelos</h1>
+      <p class="idea">Estudiar un modelo con experimentos, como se estudia un material.</p>
+    </div>
+    <nav class="pasos-nav" id="nav" aria-label="Partes de la materia"></nav>
+  </header>
+
+  <main>
+  <div tabindex="-1" class="paso" data-n="Demo" data-t="La demo">
+  <section class="demo" aria-labelledby="t-demo">
+    <div class="cab">
+      <h2 id="t-demo">El mismo pedido, doce veces</h2>
+      <p class="como">Un modelo no elige la respuesta: calcula cuánto le cierra cada una y sortea. La temperatura dice cuánto se anima con las que le cierran menos.</p>
+    </div>
+    <div class="izq">
+      <div class="rot" style="margin-top:0">Tu pedido</div>
+      <p class="pedido"><span>&gt;</span> Clasificá este mail: reclamo, consulta, felicitación o spam.</p>
+      <div class="mail" style="margin-top:6px">«Hola, el pedido llegó pero falta una pieza. ¿Me la mandan?»</div>
+      <p class="correcta"><span class="rotm">La respuesta que esperás</span> <b>Reclamo</b></p>
+      <div class="rot" id="rot-tempe">Temperatura</div>
+      <div class="fila" id="tempe" role="group" aria-labelledby="rot-tempe"></div>
+      <div class="fila" style="margin-top:10px"><button class="accion" id="doce" type="button">Preguntarle 12 veces</button></div>
+    </div>
+    <div class="der">
+      <div class="rot" style="margin-top:0">Cuánto le cierra cada respuesta, antes de sortear</div>
+      <div class="probs" id="probs"></div>
+      <div class="rot">Las 12 respuestas</div>
+      <div id="respuestas"></div>
+      <div class="cuenta" id="cuenta" aria-live="polite"><span class="n" id="n"></span><p id="msj"></p></div>
+    </div>
+  </section>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="01" data-t="Una palabra por vez" hidden>
+    <div class="texto">
+      <span class="num">Unidad 01</span>
+      <h2>Una palabra por vez</h2>
+      <p>Un modelo de lenguaje hace una sola cosa: calcula qué palabra puede seguir y elige una. Después repite.</p>
+      <p>No tiene la respuesta entera pensada de antemano. Por eso puede arrancar bien y terminar mal.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">Tu pedido</div>
+      <p class="pedido"><span>&gt;</span> Escribí la confirmación de compra.</p>
+      <div class="rot">Lo que va escribiendo</div>
+      <p class="frase" id="frase"></p>
+      <div class="rot" id="cand-rot">Las que podían seguir</div>
+      <div class="probs" id="cand"></div>
+      <div class="fila" style="margin-top:10px"><button class="accion" id="sig-pal" type="button">Siguiente palabra</button><button class="copiar chico" id="de-nuevo" type="button">Empezar de nuevo</button></div>
+      <p class="lee" id="frase-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="02" data-t="Cuándo querés variedad" hidden>
+    <div class="texto">
+      <span class="num">Unidad 02</span>
+      <h2>Cuándo querés que varíe</h2>
+      <p>Que el mismo pedido dé respuestas distintas no es un defecto. Depende de la tarea.</p>
+      <p>Para clasificar querés siempre la misma. Para buscar ideas, querés que se anime.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-var" style="margin-top:0">La temperatura</div>
+      <div class="fila" id="var" role="group" aria-labelledby="rot-var"></div>
+      <table class="tabla" id="t-var"></table>
+      <p class="lee" id="var-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="03" data-t="Cómo falla" hidden>
+    <div class="texto">
+      <span class="num">Unidad 03</span>
+      <h2>Cómo falla</h2>
+      <p>Un modelo no falla al azar. Falla de unas pocas maneras, y siempre de las mismas.</p>
+      <p>Conocerlas es saber dónde mirar antes de creerle.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-falla" style="margin-top:0">Elegí una</div>
+      <div class="fila" id="falla" role="group" aria-labelledby="rot-falla"></div>
+      <div id="falla-g" class="grafico"></div>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="04" data-t="Lo que cambia el contexto" hidden>
+    <div class="texto">
+      <span class="num">Unidad 04</span>
+      <h2>Lo que cambia el contexto</h2>
+      <p>El mismo modelo, con el mismo mail, contesta distinto según lo que va alrededor de la pregunta.</p>
+      <p>Pedir el formato o mostrar un ejemplo cambia más que cambiar de modelo.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="mail" style="margin-bottom:8px">«Soy Ana Pérez. Quiero 3 cajas del modelo grande para el viernes 14.»</div>
+      <div class="rot" id="rot-ctx">Qué le ponés alrededor</div>
+      <div class="fila" id="ctx" role="group" aria-labelledby="rot-ctx"></div>
+      <div class="rot">Tu pedido</div>
+      <p class="pedido" id="ctx-pedido"></p>
+      <div class="rot">Lo que respondió</div>
+      <div class="mail salida" id="ctx-resp"></div>
+      <p class="lee" id="ctx-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="05" data-t="Experimentos" hidden>
+    <div class="texto">
+      <span class="num">Unidad 05</span>
+      <h2>Experimentos</h2>
+      <p>Para saber qué funciona: cambiar una sola cosa, repetir muchas veces y contar.</p>
+      <p>Si cambiás tres cosas juntas y probás una vez, no sabés nada.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">La tarea: clasificar reclamos. El pedido de siempre acierta 14 de 20</div>
+      <div class="fila" id="exp" role="group" aria-label="Cómo probás"></div>
+      <table class="tabla" id="t-exp"></table>
+      <p class="lee" id="exp-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="06" data-t="Mirar adentro" hidden>
+    <div class="texto">
+      <span class="num">Unidad 06</span>
+      <h2>Mirar adentro</h2>
+      <p>Si le preguntás por qué respondió algo, te da una explicación. Pero esa explicación es otro texto que escribió, no un registro de lo que pasó adentro.</p>
+      <p>Hoy se puede medir algo de lo que pasa adentro. Leerlo entero, todavía no.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">Tu pedido</div>
+      <p class="pedido"><span>&gt;</span> Clasificá este mail. Respondió: <b>Reclamo</b>.</p>
+      <div class="rot" id="rot-ad">Por qué</div>
+      <div class="fila" id="ad" role="group" aria-labelledby="rot-ad"></div>
+      <div class="mail" id="ad-mail"></div>
+      <p class="lee" id="ad-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="07" data-t="Versiones" hidden>
+    <div class="texto">
+      <span class="num">Unidad 07</span>
+      <h2>Cada versión es otro modelo</h2>
+      <p>Una versión nueva puede ser mejor en general y peor en lo tuyo. Lo que anuncian mide otras tareas, no la tuya.</p>
+      <p>Antes de cambiar, se corren tus casos.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-ver" style="margin-top:0">Salió la versión 2. ¿Qué hacés?</div>
+      <div class="fila" id="ver" role="group" aria-labelledby="rot-ver"></div>
+      <table class="tabla" id="t-ver"></table>
+      <p class="lee" id="ver-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="Taller" data-t="El taller" hidden>
+    <div class="texto">
+      <span class="num">Unidad 08 · Taller</span>
+      <h2>Conocer un modelo nuevo en una semana</h2>
+      <ol>
+        <li>Juntá 30 pedidos reales tuyos, cada uno con la respuesta que esperás.</li>
+        <li>Corré cada uno 5 veces en el modelo nuevo y en el que usás hoy.</li>
+        <li>Contá cuántas salen bien, cuántas cambian entre una vez y otra, y cómo falla.</li>
+        <li>Llená la ficha de al lado. Una página, no más.</li>
+      </ol>
+      <p class="nota">Aprobás cuando la ficha dice para qué lo usás y para qué no, con números.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">La ficha</div>
+      <pre id="prompt">Modelo: [nombre y versión]
+Probado con: [cuántos pedidos, cuántas veces cada uno]
+Acierta: [cuántas de cuántas]
+Varía: [cuántas veces cambió la respuesta al mismo pedido]
+Falla así: [inventa / sigue la corriente / pierde el hilo]
+Lo uso para: [...]
+No lo uso para: [...]</pre>
+      <button class="copiar" id="copiar" type="button" aria-live="polite">Copiar</button>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso cierre" data-n="Cierre" data-t="El cierre" hidden>
+    <span class="num">Cierre</span>
+    <h2>¿Entonces no se le puede creer a un modelo?</h2>
+    <p class="resp"><b>Sí se puede.</b> Como a un material: sabiendo cómo se comporta. Nadie construye un puente sin saber cuánto aguanta el acero.</p>
+    <p class="resp">A un modelo se le cree en lo que mediste. En lo demás, todavía no lo conocés.</p>
+    <div class="tres">
+      <div class="ejemplo"><span class="rotm">Medilo</span><p>Lo que hace bien y lo que no se sabe probando, no leyendo lo que dicen de él.</p></div>
+      <div class="ejemplo"><span class="rotm">Repetilo</span><p>Una respuesta no dice nada de un modelo que sortea. Veinte, empiezan a decir.</p></div>
+      <div class="ejemplo"><span class="rotm">Volvé a medir</span><p>Cada versión nueva es otro material. Lo que sabías del anterior, hay que confirmarlo.</p></div>
+    </div>
+    <p class="verbo"><q>Sin evals, la adopción es fe, no ingeniería.</q>El Ritual del Despertar, séptima Ley del Constructor. Archivo de Austral.</p>
+  </div>
+  </main>
+
+  <footer class="pie-nav">
+    <button class="copiar" id="ant" type="button"><span aria-hidden="true">← </span>Anterior</button>
+    <span class="aviso">Simulacro de juguete: los porcentajes, los mails y las versiones están inventados. El temario es una opinión, no un plan de estudios oficial. <a href="https://kvothesson.com/">Kvothesson</a> · Universo Austral.</span>
+    <button class="copiar sig" id="sig" type="button"></button>
+  </footer>
+</div>
+
+<script src="curso.js"></script>
+<script>
+const quietoDemo = matchMedia("(prefers-reduced-motion: reduce)").matches || location.search.includes("sin-animacion");
+const pct = p => (p >= .995 ? "100" : p < .005 ? "0" : Math.round(p * 100)) + "%";
+const barras = (el, filas) => $(el).innerHTML = filas.map(f => `<div class="prob ${f.cls || ""}"><b>${f.t}</b><span class="barrita"><i style="width:${Math.max(.5, f.p * 100)}%"></i></span><span>${pct(f.p)}</span></div>`).join("");
+
+// Demo principal: clasificar un mail. El modelo tiene un puntaje por respuesta y sortea según la temperatura.
+const OPC = [["Reclamo", 3], ["Consulta", 2], ["Felicitación", -.5], ["Spam", -2]];
+let T = 1, corrida = 0;
+const probs = () => { if (!T) return OPC.map((_, i) => i ? 0 : 1); const e = OPC.map(o => Math.exp(o[1] / T)), s = e.reduce((a, b) => a + b, 0); return e.map(v => v / s); };
+const sortear = p => { let r = Math.random(), i = 0; while (i < p.length - 1 && r > p[i]) r -= p[i++]; return i; };
+function verProbs(){ const p = probs(); barras("probs", OPC.map((o, i) => ({t:o[0], p:p[i], cls:i ? "" : "top"}))); }
+function contar(salidas){
+  const otras = salidas.filter(i => i > 0).length;
+  $("n").textContent = otras; $("cuenta").classList.toggle("listo", !otras);
+  $("msj").innerHTML = `de 12 <b>no dijeron «Reclamo»</b>. ` + (!T ? "En cero elige siempre la que más le cierra: mismo pedido, misma respuesta."
+    : T < 1 ? "Casi siempre la que más le cierra. Casi."
+    : T < 2 ? "Mismo mail, mismo pedido. Lo único que cambió entre una y otra fue el sorteo."
+    : "Con la temperatura alta aparecen hasta las que casi no tenían chance.");
+}
+function preguntar(){
+  const mia = ++corrida, p = probs(), salidas = Array.from({length:12}, () => sortear(p));
+  const chip = i => `<span class="k ${!i ? "ok" : i === 1 ? "suerte" : "mal"}${quietoDemo ? "" : " aparece"}">${OPC[i][0]}</span>`;
+  $("n").textContent = "?"; $("msj").textContent = "Preguntando…"; $("cuenta").classList.remove("listo");
+  if (quietoDemo) { $("respuestas").innerHTML = salidas.map(chip).join(""); contar(salidas); return; }
+  $("respuestas").innerHTML = ""; let k = 0;
+  const paso = () => { if (mia !== corrida) return; if (k >= 12) { contar(salidas); return; } $("respuestas").insertAdjacentHTML("beforeend", chip(salidas[k++])); setTimeout(paso, 230); };
+  paso();
+}
+$("doce").addEventListener("click", preguntar);
+opciones("tempe", [["0", "0"], ["0.5", "0,5"], ["1", "1"], ["2", "2"]], k => { T = +k; verProbs(); preguntar(); }, "1");
+
+// Unidad 1: una frase armada de a una palabra, con las que podían seguir.
+const INICIO = "Gracias por tu compra. Tu pedido";
+const PASOS = [
+  [["llega", .58], ["está", .22], ["fue", .12], ["se", .08]],
+  [["el", .70], ["mañana", .18], ["en", .12]],
+  [["jueves", .41], ["lunes", .33], ["martes", .26]],
+  [["entre", .45], ["por", .35], ["a", .20]],
+  [["las", .92], ["la", .08]],
+  [["9", .50], ["10", .30], ["14", .20]]];
+let paso1 = 0;
+function verFrase(){
+  const dichas = PASOS.slice(0, paso1).map(p => p[0][0]);
+  $("frase").innerHTML = INICIO + dichas.map((w, i) => ` <span class="${i === paso1 - 1 ? "nueva" : ""}">${w}</span>`).join("") + (paso1 < PASOS.length ? ' <span class="cursor" aria-hidden="true">▍</span>' : ".");
+  const ult = PASOS[paso1 - 1];
+  $("cand-rot").textContent = ult ? "Las que podían seguir, y la que eligió" : "Las que podían seguir";
+  barras("cand", ult ? ult.map((o, i) => ({t:o[0], p:o[1], cls:i ? "" : "elegida"})) : PASOS[0].map(o => ({t:o[0], p:o[1]})));
+  $("sig-pal").disabled = paso1 >= PASOS.length;
+  $("frase-txt").textContent = !ult ? "Tocá «Siguiente palabra»."
+    : paso1 < PASOS.length ? `Eligió «${ult[0][0]}», que le cerraba en un ${Math.round(ult[0][1] * 100)}%. Podría haber sido «${ult[1][0]}».`
+    : "Así escribe todo: una palabra por vez. Ninguna de estas estaba decidida cuando empezó la frase.";
+}
+$("sig-pal").addEventListener("click", () => { paso1++; verFrase(); });
+$("de-nuevo").addEventListener("click", () => { paso1 = 0; verFrase(); });
+verFrase();
+
+// Unidad 2: dos tareas, preguntadas tres veces, con temperatura baja y alta.
+opciones("var", [["baja", "Baja"], ["alta", "Alta"]], k => {
+  const baja = k === "baja";
+  const F = baja ? [["Clasificar este mail", "Reclamo · Reclamo · Reclamo", 1, "siempre lo mismo"], ["Proponer asuntos para el newsletter", "«Novedades de marzo» las tres veces", 0, "siempre la idea más obvia"]]
+    : [["Clasificar este mail", "Reclamo · Consulta · Reclamo", 0, "cambia de opinión con el mismo mail"], ["Proponer asuntos para el newsletter", "«Novedades de marzo» · «Llegó el otoño» · «Tres cosas que no sabías»", 1, "ideas distintas para elegir"]];
+  $("t-var").innerHTML = `<thead><tr><th scope="col">Tarea</th><th scope="col">Le preguntaste 3 veces</th><th scope="col">¿Sirve?</th></tr></thead><tbody>`
+    + F.map(f => `<tr><td>${f[0]}</td><td>${f[1]}</td><td class="${f[2] ? "ok" : "mal"}">${f[2] ? "✓" : "✕"} ${f[3]}</td></tr>`).join("") + "</tbody>";
+  $("var-txt").textContent = baja ? "Para clasificar, perfecto. Para buscar ideas, te da siempre la misma." : "Para buscar ideas, perfecto. Para clasificar, el mismo mail cambia de etiqueta.";
+});
+
+// Unidad 3: tres maneras de fallar, con lo que pasaba de verdad y cómo cuidarse.
+const FALLAS = {
+  inventa:["Inventa con seguridad", "¿Qué dice la cláusula 14 del contrato con Distribuidora Norte?", "La cláusula 14 fija una multa del 5% por cada día de demora.", "El contrato tiene 12 cláusulas. La 14 no existe.", "Pedile que copie el texto exacto y diga de dónde lo sacó. Si no puede copiarlo, no lo sabe."],
+  sigue:["Te sigue la corriente", "Revisá este presupuesto. Creo que está bien, ¿no?", "Sí, está todo bien.", "Sin el «creo que está bien», el mismo modelo encuentra el error: la suma da $412.000, no $421.000.", "No le digas lo que esperás. Preguntá sin dar tu opinión."],
+  hilo:["Pierde el hilo", "(en la primera de 80 páginas) Respondé siempre en pesos. […] (en la última) ¿Cuánto costó el envío de mayo?", "Costó USD 340.", "La instrucción estaba al principio y la pregunta, 80 páginas después.", "Repetí lo importante cerca de la pregunta, o partí el texto en pedazos."]};
+opciones("falla", Object.entries(FALLAS).map(([k, f]) => [k, f[0]]), k => {
+  const f = FALLAS[k];
+  $("falla-g").innerHTML = `<div class="rot">Le preguntaste</div><p class="pedido"><span>&gt;</span> ${f[1]}</p>`
+    + `<div class="rot">Respondió, muy seguro</div><div class="mail">${f[2]}</div>`
+    + `<div class="rot">Lo que pasaba</div><p class="lee mal" style="margin:0;min-height:0">${f[3]}</p>`
+    + `<div class="rot">Cómo cuidarte</div><p class="lee ok" style="margin:0;min-height:0">${f[4]}</p>`;
+});
+
+// Unidad 4: el mismo mail con tres pedidos distintos alrededor.
+const CTX = {
+  solo:["Solo la pregunta", "", "Ana Pérez quiere comprar tres cajas del modelo grande y las necesita para el viernes 14, según indica en su mensaje.", "Está bien, pero en un párrafo. Para pasarlo a una planilla lo copiás a mano, y cada vez lo escribe distinto."],
+  formato:["El formato que querés", " Respondé así: Cliente / Pedido / Fecha.", "Cliente: Ana Pérez\nPedido: 3 cajas del modelo grande\nFecha: viernes 14", "Mismo modelo, mismo mail. Ahora sale igual cada vez y entra directo en la planilla."],
+  ejemplo:["Un ejemplo resuelto", " Así lo quiero: «Juan Gómez · 2 cajas chicas · viernes 3».", "Ana Pérez · 3 cajas grandes · viernes 14", "Con un ejemplo copió hasta la forma de escribir. Muchas veces un ejemplo explica más que una regla."]};
+opciones("ctx", Object.entries(CTX).map(([k, c]) => [k, c[0]]), k => {
+  const c = CTX[k];
+  $("ctx-pedido").innerHTML = `<span>&gt;</span> Sacá los datos de este mail.${c[1] ? `<span class="mas">${c[1]}</span>` : ""}`;
+  $("ctx-resp").textContent = c[2];
+  $("ctx-txt").textContent = c[3]; $("ctx-txt").className = "lee " + (k === "solo" ? "suerte" : "ok");
+});
+
+// Unidad 5: el mismo cambio probado de dos maneras.
+opciones("exp", [["mal", "Cambiar todo junto, probar una vez"], ["bien", "Una cosa por vez, 20 veces cada una"]], k => {
+  const bien = k === "bien", bar = (a, de) => `<i class="mini" style="width:${a / de * 60}px" aria-hidden="true"></i>`;
+  const F = bien ? [["El pedido de siempre", 14], ["+ la lista de categorías", 17], ["+ un ejemplo resuelto", 18], ["+ «respondé en una palabra»", 14]]
+    : [["El pedido nuevo, con los tres cambios juntos", null]];
+  $("t-exp").innerHTML = `<thead><tr><th scope="col">Qué probaste</th><th scope="col">Aciertos</th></tr></thead><tbody>`
+    + F.map(f => `<tr><td>${f[0]}</td><td>${f[1] === null ? "1 de 1 ✓" : `${bar(f[1], 20)}${f[1]} de 20`}</td></tr>`).join("") + "</tbody>";
+  $("exp-txt").textContent = bien ? "La lista y el ejemplo ayudan. «Respondé en una palabra» no cambió nada: se puede sacar. Eso solo se ve cambiando de a una y repitiendo."
+    : "Salió bien. ¿Por cuál de los tres cambios? No sabés. ¿Fue suerte? Tampoco: con una sola prueba no hay forma de saberlo.";
+  $("exp-txt").className = "lee " + (bien ? "ok" : "suerte");
+});
+
+// Unidad 6: la explicación que da, contra lo que se puede medir.
+opciones("ad", [["dice", "Lo que dice que pensó"], ["mide", "Lo que se puede medir"]], k => {
+  const mide = k === "mide";
+  const P = [["Hola, el pedido", 0], ["llegó", 1], ["pero", 1], ["falta", 3], ["una", 0], ["pieza.", 2], ["¿Me la mandan?", 1]];
+  $("ad-mail").innerHTML = mide ? "«" + P.map(([w, p]) => p ? `<span class="peso${p}">${w}<span class="vh"> (pesó ${["", "poco", "bastante", "mucho"][p]})</span></span>` : w).join(" ") + "»"
+    : "«Es un reclamo porque el cliente está enojado.»";
+  $("ad-txt").textContent = mide ? "Hoy se puede medir, de forma aproximada, qué palabras pesaron más en la respuesta: acá «falta» y «pieza». Lo que no se puede es leerle el razonamiento entero, como se lee una receta."
+    : "Suena razonable, pero el mail no muestra enojo. Esa explicación es un texto más que escribió después, no un registro de lo que pasó adentro.";
+  $("ad-txt").className = "lee " + (mide ? "ok" : "suerte");
+});
+
+// Unidad 7: la versión nueva, en general y en tu tarea.
+opciones("ver", [["sin", "Cambiar sin probar"], ["con", "Correr tus 50 casos antes"]], k => {
+  const con = k === "con";
+  $("t-ver").innerHTML = `<thead><tr><th scope="col">Versión</th><th scope="col">En general, según anuncian</th><th scope="col">En tus 50 reclamos</th></tr></thead><tbody>`
+    + `<tr><td>Versión 1</td><td>82%</td><td class="ok">45 de 50</td></tr>`
+    + `<tr><td>Versión 2</td><td>88%, mejor</td><td class="${con ? "mal" : "nada"}">${con ? "39 de 50, peor" : "sin probar"}</td></tr></tbody>`;
+  $("ver-txt").textContent = con ? "Mejor en general y peor en lo tuyo: confunde reclamos con consultas. Para esto te quedás con la 1, o ajustás el pedido y volvés a medir."
+    : "Cambiaste porque la 2 es mejor en general. En tu tarea es peor, y te vas a enterar por los clientes.";
+  $("ver-txt").className = "lee " + (con ? "ok" : "mal");
+});
+
+iniciarCurso();
+</script>
+</body>
+</html>

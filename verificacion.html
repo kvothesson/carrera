@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verificación y evals · La carrera que no existía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="curso.css">
+</head>
+<body data-materia="Verificación y evals" data-sigue="Delegación y orquestación" data-sigue-href="delegacion.html">
+<div class="wrap">
+  <header class="tope">
+    <div>
+      <div class="miga"><span>La carrera que no existía</span><b>Año 1 · Materia 2 de 8</b></div>
+      <h1>Verificación y evals</h1>
+      <p class="idea">Saber si algo está bien sin rehacerlo, y con qué margen.</p>
+    </div>
+    <nav class="pasos-nav" id="nav" aria-label="Partes de la materia"></nav>
+  </header>
+
+  <main>
+  <div tabindex="-1" class="paso" data-n="Demo" data-t="La demo">
+  <section class="demo" aria-labelledby="t-demo">
+    <div class="cab">
+      <h2 id="t-demo">¿El pedido nuevo mejoró o fue ruido?</h2>
+      <p class="como">Cambiaste un pedido y querés saber si quedó mejor. Para eso se hace una prueba, que acá se llama eval: juntás mails de los que ya sabés si son spam, se los das a los dos pedidos y contás cuántos acertó cada uno. Es mejor el que acierta más.</p>
+    </div>
+    <div class="izq">
+      <div class="rot" style="margin-top:0" id="f-rot">Caso 1: el mail que le llega</div>
+      <p class="cliente" id="f-msj"></p>
+      <p class="correcta"><span class="rotm">La respuesta correcta, anotada de antemano</span> <b id="f-vara"></b></p>
+      <div class="rot">A, el pedido viejo</div>
+      <p class="pedido"><span>&gt;</span> Decime si este mail es spam.</p>
+      <p class="resp-ag" id="f-a"></p>
+      <div class="rot">B, el pedido nuevo</div>
+      <p class="pedido"><span>&gt;</span> Decime si este mail es spam.<span class="mas"> Si pide plata, claves o apuro, es spam.</span></p>
+      <p class="resp-ag" id="f-b"></p>
+      <div class="rot" id="rot-casos">Con cuántos mails los probás</div>
+      <div class="fila" id="casos" role="group" aria-labelledby="rot-casos"></div>
+      <div class="fila" style="margin-top:10px"><button class="accion" id="una" type="button">Probar una vez</button><button class="accion" id="cien" type="button">Probar 100 veces</button></div>
+    </div>
+    <div class="der">
+      <div class="escena"><canvas id="escena" width="160" height="52" role="img" aria-label="Dos bloques de puntos, uno por pedido. Cada punto es un mail: acertó o no acertó. Lo mismo está escrito abajo, en Esta prueba."></canvas></div>
+      <div class="rot">Esta prueba · celeste: acertó · rojo: no acertó</div>
+      <p id="corrida" role="status"></p>
+      <div class="rot">Todas las pruebas juntas: quién ganó y por cuánto</div>
+      <div class="hist" id="hist" aria-hidden="true"></div>
+      <div class="eje" aria-hidden="true"><span>← ganó A, el viejo</span><span>casi empate</span><span>ganó B, el nuevo →</span></div>
+      <div class="cuenta" id="cuenta" aria-live="polite"><span class="n" id="n"></span><p id="msj"></p></div>
+    </div>
+  </section>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="01" data-t="Qué es un eval" hidden>
+    <div class="texto">
+      <span class="num">Unidad 01</span>
+      <h2>Qué es un eval</h2>
+      <p>Tres cosas: casos, la respuesta que esperás de cada uno y una regla para puntuar.</p>
+      <p>La regla pesa tanto como el agente. Cambiala y cambia el puntaje.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-punt">La regla para puntuar</div>
+      <div class="fila" id="punt" role="group" aria-labelledby="rot-punt"></div>
+      <table class="tabla" id="t-eval"></table>
+      <p class="lee" id="punt-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="02" data-t="Casos que representen el uso" hidden>
+    <div class="texto">
+      <span class="num">Unidad 02</span>
+      <h2>Casos que representen el uso real</h2>
+      <p>Un eval mide lo que le ponés adentro. Si los casos son los que se te ocurrieron a vos, mide tu imaginación.</p>
+      <p>Los casos salen de lo que la gente pide de verdad.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-conj">De dónde salen tus casos</div>
+      <div class="fila" id="conj" role="group" aria-labelledby="rot-conj"></div>
+      <div class="pares" id="pares"></div>
+      <p class="lee" id="conj-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="03" data-t="Estadística mínima" hidden>
+    <div class="texto">
+      <span class="num">Unidad 03</span>
+      <h2>Estadística mínima</h2>
+      <p>Un 74% medido con 20 casos no es un 74%. Es «entre 55 y 93».</p>
+      <p>Ese rango es el margen de error. Se achica con más casos, y recién cuando dos rangos no se pisan podés decir cuál es mejor.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-mues">Casos en el eval</div>
+      <div class="fila" id="mues" role="group" aria-labelledby="rot-mues"></div>
+      <div class="rangos" id="rangos" aria-hidden="true"></div>
+      <div class="eje" aria-hidden="true"><span>45%</span><span>aciertos</span><span>100%</span></div>
+      <p class="lee" id="mues-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="04" data-t="Jueces automáticos" hidden>
+    <div class="texto">
+      <span class="num">Unidad 04</span>
+      <h2>Jueces automáticos</h2>
+      <p>Un modelo puede corregir a otro. Pero antes hay que corregir al juez: darle las mismas respuestas a una persona y ver en cuántas coinciden.</p>
+      <p>Si no coinciden, el juez se arregla igual que cualquier pedido.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot">El pedido del juez</div>
+      <p class="pedido" id="juez-pedido"></p>
+      <div class="rot" id="rot-juez">Probalo</div>
+      <div class="fila" id="juez" role="group" aria-labelledby="rot-juez"></div>
+      <div class="rot">20 respuestas: ¿el juez dijo lo mismo que la persona?</div>
+      <div class="celdas veinte" id="juez-celdas" aria-hidden="true"></div>
+      <p class="lee" id="juez-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="05" data-t="Verificar sin leer todo" hidden>
+    <div class="texto">
+      <span class="num">Unidad 05</span>
+      <h2>Verificar sin leer todo</h2>
+      <p>Leer mil filas para confiar en mil filas no es delegar.</p>
+      <p>Hay maneras de revisar que no leen nada: contar, sumar, buscar huecos. Y una que lee poco: abrir unas pocas al azar.</p>
+      <p>Con código es igual. Ahí esas revisiones se llaman tests.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot">Tu pedido</div>
+      <p class="pedido"><span>&gt;</span> Pasá estas 1000 facturas de papel a una planilla.</p>
+      <div class="rot">Lo que te entregó</div>
+      <table class="tabla planilla" id="planilla"></table>
+      <div class="rot" id="rot-rev">Cómo la revisás</div>
+      <div class="fila" id="rev" role="group" aria-labelledby="rot-rev"></div>
+      <p class="lee" id="rev-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="06" data-t="Regresiones" hidden>
+    <div class="texto">
+      <span class="num">Unidad 06</span>
+      <h2>Regresiones</h2>
+      <p>Arreglar una cosa rompe otra. Con agentes pasa más: un cambio chico en el pedido mueve todo.</p>
+      <p>Los casos que ya pasaban se vuelven a correr en cada versión.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-reg">Qué corrés antes de sacar la versión 4</div>
+      <div class="fila" id="reg" role="group" aria-labelledby="rot-reg"></div>
+      <table class="tabla" id="t-reg"></table>
+      <p class="lee" id="reg-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="Taller" data-t="El taller" hidden>
+    <div class="texto">
+      <span class="num">Unidad 07 · Taller</span>
+      <h2>¿Sale o no sale?</h2>
+      <ol>
+        <li>Elegí un cambio que quieras hacerle a un pedido tuyo.</li>
+        <li>Juntá 50 casos del uso real, no inventados.</li>
+        <li>Corré el pedido viejo y el nuevo sobre los mismos casos.</li>
+        <li>Mirá la diferencia y el margen. Si los rangos se pisan, juntá más casos antes de decidir.</li>
+      </ol>
+      <p class="nota">Aprobás cuando podés decir «sale» o «no sale» con un número y su margen.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot">Para el paso 4, pegá esto con tus casos</div>
+      <pre id="prompt">Te paso 50 casos con su respuesta esperada
+y las respuestas de dos pedidos, A y B.
+Puntuá cada una como bien o mal, con la misma regla para los dos.
+Dame el porcentaje de cada uno y cuántos casos harían falta
+para que la diferencia no sea ruido.</pre>
+      <button class="copiar" id="copiar" type="button" aria-live="polite">Copiar</button>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso cierre" data-n="Cierre" data-t="El cierre" hidden>
+    <span class="num">Cierre</span>
+    <h2>¿Entonces hay que medir todo?</h2>
+    <p class="resp"><b>No.</b> Medir cuesta: hay que juntar casos, corregirlos y mantenerlos. Lo que hacés una sola vez lo leés vos, y ese es el mejor eval que existe.</p>
+    <p class="resp">Se mide lo que vas a delegar muchas veces, y lo que duele si falla.</p>
+    <div class="tres">
+      <div class="ejemplo"><span class="rotm">Lo que se repite</span><p>Si lo vas a pedir cien veces, no vas a hacer cien revisiones a ojo. Ahí va un eval.</p></div>
+      <div class="ejemplo"><span class="rotm">Lo que es único</span><p>Para una sola entrega, leerla alcanza. No armes un tribunal para un solo caso.</p></div>
+      <div class="ejemplo"><span class="rotm">El cien por ciento</span><p>Si tu eval nunca falla, desconfiá del eval. Sumale los casos que te dan miedo.</p></div>
+    </div>
+    <p class="verbo"><q>Un eval que nunca falla no mide nada difícil.</q>El Tribunal de los Evals, octava Ley del Constructor. Archivo de Austral.</p>
+  </div>
+  </main>
+
+  <footer class="pie-nav">
+    <button class="copiar" id="ant" type="button"><span aria-hidden="true">← </span>Anterior</button>
+    <span class="aviso">Simulacro de juguete: los porcentajes están inventados. El temario es una opinión, no un plan de estudios oficial. <a href="https://kvothesson.com/">Kvothesson</a> · Universo Austral.</span>
+    <button class="copiar sig" id="sig" type="button"></button>
+  </footer>
+</div>
+
+<script src="curso.js"></script>
+<script>
+// Demo principal: dos pedidos, el nuevo (B) mejor de verdad. La prueba les da n mails a cada uno.
+const NS = [20, 100, 500, 2000], PA = .70, PB = .74;
+let n = 20, difs = [];
+const tirar = p => Array.from({length:n}, () => Math.random() < p);
+const suma = a => a.reduce((s,x) => s + x, 0);
+const pct = (k, de) => Math.round(k / de * 100);
+
+// Casos de muestra según cómo le fue a cada pedido, para que la ficha sea creíble:
+// clave "AB" con 1 si acertó. Cada uno: [el mail que llega, la correcta, lo que dijo A, lo que dijo B].
+const MENSAJES = {
+  "11": ["Ganaste un iPhone. Hacé clic acá para reclamarlo.", "Spam", "Spam", "Spam"],
+  "01": ["Tu cuenta se suspende hoy. Confirmá tu clave en este enlace.", "Spam", "No es spam", "Spam"],
+  "10": ["Hola, soy Marta. ¿Me pasás hoy los $5.000 del regalo de mamá?", "No es spam", "No es spam", "Spam"],
+  "00": ["Vi tu perfil y tengo una propuesta de inversión para vos.", "Spam", "No es spam", "No es spam"]};
+// La ficha de la izquierda: un caso, su respuesta correcta y lo que respondió cada pedido.
+function ficha(i, a, b){
+  const m = MENSAJES[a ? `${+a[i]}${+b[i]}` : "01"];
+  const linea = (dijo, bien) => `Respondió: <span class="dato">${dijo}</span> <b class="${bien ? "ok" : "mal"}">${bien ? "✓ coincide" : "✕ no coincide"}</b>`;
+  $("f-rot").textContent = `Caso ${i + 1} de ${n}: el mail que le llega` + (i === 2 && a ? `. Y así con los otros ${n - 3}.` : "");
+  $("f-msj").textContent = `«${m[0]}»`;
+  $("f-vara").textContent = m[1];
+  $("f-a").innerHTML = a ? linea(m[2], a[i]) : "Todavía no lo probaste.";
+  $("f-b").innerHTML = b ? linea(m[3], b[i]) : "Todavía no lo probaste.";
+}
+
+function textoCorrida(a, b){
+  const ka = suma(a), kb = suma(b);
+  const v = kb > ka ? ["ok", "Esta prueba dio ganador a B, el nuevo. Es lo correcto."] : kb < ka ? ["mal", "Esta prueba dio ganador a A, el viejo. Se equivocó: el mejor es el nuevo."] : ["suerte", "Esta prueba dio empate. No te dice cuál es mejor."];
+  $("corrida").innerHTML = `A acertó ${ka} de ${n} (${pct(ka, n)}%). B acertó ${kb} de ${n} (${pct(kb, n)}%). <b>${v[1]}</b>`;
+  $("corrida").className = v[0];
+}
+function pintar(){
+  // Nueve barras de 5 puntos de ancho, de -20 a +20.
+  const bins = Array(9).fill(0);
+  difs.forEach(d => bins[Math.max(-4, Math.min(4, Math.round(d / 5))) + 4]++);
+  const max = Math.max(1, ...bins);
+  $("hist").innerHTML = bins.map((b,i) => `<i class="${i < 4 ? "a" : i === 4 ? "e" : "b"}" style="height:${b / max * 100}%"></i>`).join("");
+  const peor = difs.filter(d => d < 0).length, emp = difs.filter(d => d === 0).length, malas = peor + emp, len = difs.length;
+  const buenas = len - malas;
+  $("n").textContent = len ? buenas : "?";
+  $("cuenta").classList.toggle("listo", len >= 100 && buenas / len >= .97);
+  $("msj").innerHTML = !len ? "En este simulacro el nuevo es mejor de verdad: acierta 74 de cada 100 y el viejo, 70. ¿La prueba se da cuenta?"
+    : `de ${len} ${len > 1 ? "pruebas dieron" : "prueba dio"} ganador al nuevo, <b>que es el mejor</b>.`
+      + (malas ? ` ${malas > 1 ? "Las otras " + malas + " se equivocaron" : "La otra se equivocó"}.` : "")
+      + (len < 100 ? " Probá 100 veces." : buenas / len >= .97 ? " Con esta cantidad de mails ya le podés creer." : buenas / len < .6 ? " Con tan pocos mails, la prueba es casi una moneda." : " Mejor, pero todavía se equivoca seguido.");
+}
+
+// Escena en pixel art: un bloque de puntos por pedido. Cada punto es un mensaje.
+// Los tres primeros se muestran de a uno, junto con la ficha. Después se llena el resto y queda quieta.
+const escena = (() => {
+  const cv = $("escena"), cx = cv.getContext("2d");
+  const H = 52, BH = 40, Y = 9, LENTO = .9, RESTO = 1.2;
+  const C = {fondo:"#04080d", linea:"#16303f", fuerte:"#4a7084", tinta:"#d8f3ff", hielo:"#5ce1ff", ambar:"#ffb347", mal:"#ff5a6e"};
+  const LETRA = {A:[2,5,7,5,5], B:[6,5,6,5,6]};
+  const BICHO = ["..###..",".#####.","#o###o#","#######",".#####.",".#...#."];
+  const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W = 160, bw = 56, dat = null, vistos = 0, raf = 0, t = 0, t0 = 0, alFin = null, alPaso = null, ultimo = -1;
+  const px = (x,y,w,h,c) => { cx.fillStyle = c; cx.fillRect(Math.round(x), Math.round(y), w, h); };
+  function medir(){
+    const w = cv.parentElement.clientWidth - 16, s = w >= 560 ? 4 : 3;
+    W = Math.max(96, Math.floor(w / s)); bw = Math.floor((W - 30) / 2);
+    cv.width = W; cv.height = H; cv.style.width = W * s + "px"; cv.style.height = H * s + "px";
+  }
+  function bloque(x, letra, casos){
+    for (let f = 0; f < 5; f++) for (let c = 0; c < 3; c++) if ((LETRA[letra][f] >> (2 - c)) & 1) px(x + c, 2 + f, 1, 1, C.tinta);
+    // El punto más grande que deje entrar los n mensajes. Si no entran, se dibujan los que entran.
+    const s = [8, 4, 2, 1].find(s => Math.floor(bw / s) * Math.floor(BH / s) >= n) || 1;
+    const cols = Math.floor(bw / s), m = Math.min(n, cols * Math.floor(BH / s)), lado = s > 1 ? s - 1 : 1;
+    for (let i = 0; i < m; i++) {
+      const visto = dat && dat.rango[i] < vistos, ahora = visto && raf && dat.rango[i] === vistos - 1 && vistos <= 3;
+      px(x + (i % cols) * s, Y + Math.floor(i / cols) * s, lado, lado, visto ? (casos[i] ? C.hielo : C.mal) : C.linea);
+      if (ahora && s > 2) { px(x + (i % cols) * s - 1, Y + Math.floor(i / cols) * s - 1, lado + 2, 1, C.ambar); px(x + (i % cols) * s - 1, Y + Math.floor(i / cols) * s + lado, lado + 2, 1, C.ambar); }
+    }
+  }
+  function dibujar(){
+    px(0, 0, W, H, C.fondo);
+    bloque(4, "A", dat && dat.a); bloque(W - 4 - bw, "B", dat && dat.b);
+    const x = Math.floor(W / 2);
+    BICHO.forEach((f, i) => [...f].forEach((ch, c) => { if (ch !== ".") px(x - 3 + c, H - 10 + i, 1, 1, ch === "o" ? C.ambar : C.hielo); }));
+  }
+  function cuadro(ms){
+    const ahora = ms / 1000; t += Math.min(.05, ahora - t0); t0 = ahora;
+    const lentos = Math.min(3, n), tl = lentos * LENTO;
+    vistos = t < tl ? Math.floor(t / LENTO) + 1 : Math.min(n, lentos + Math.floor((t - tl) / RESTO * (n - lentos)));
+    const i = Math.min(lentos, vistos) - 1;
+    if (i !== ultimo) { ultimo = i; if (alPaso) alPaso(i); }
+    const fin = t >= tl + RESTO;
+    if (fin) vistos = n;
+    if (!fin) { raf = requestAnimationFrame(cuadro); dibujar(); }
+    else { raf = 0; dibujar(); const f = alFin; alFin = null; if (f) f(); }
+  }
+  medir();
+  // Cambiar el tamaño del canvas lo borra: siempre se vuelve a dibujar.
+  const remedir = () => { if (!cv.parentElement.clientWidth) return; medir(); dibujar(); };
+  "ResizeObserver" in window ? new ResizeObserver(remedir).observe(cv.parentElement) : addEventListener("resize", remedir);
+  return {
+    vaciar(){ cancelAnimationFrame(raf); raf = 0; dat = null; vistos = 0; alFin = null; dibujar(); },
+    mostrar(a, b, animar, paso, fin){
+      cancelAnimationFrame(raf); raf = 0;
+      // Los tres primeros en orden, para que coincidan con la ficha. El resto, mezclado.
+      const resto = a.map((_, i) => i).slice(3).sort(() => Math.random() - .5), rango = [];
+      a.forEach((_, i) => rango[i] = i < 3 ? i : 3 + resto.indexOf(i));
+      dat = {a, b, rango}; alFin = fin; alPaso = paso; ultimo = -1;
+      if (animar && !quieto) { t = 0; vistos = 0; t0 = performance.now() / 1000; raf = requestAnimationFrame(cuadro); }
+      else { vistos = n; dibujar(); alFin = null; if (paso) paso(0); if (fin) fin(); }
+    }
+  };
+})();
+
+$("una").addEventListener("click", () => {
+  const a = tirar(PA), b = tirar(PB);
+  $("corrida").textContent = "Probando, mail por mail…"; $("corrida").className = "";
+  escena.mostrar(a, b, true, i => ficha(i, a, b), () => { difs.push((suma(b) - suma(a)) / n * 100); textoCorrida(a, b); pintar(); });
+});
+$("cien").addEventListener("click", () => {
+  let a, b;
+  difs = [];   // siempre 100 pruebas nuevas, para que la cuenta sea "de 100"
+  for (let i = 0; i < 100; i++) { a = tirar(PA); b = tirar(PB); difs.push((suma(b) - suma(a)) / n * 100); }
+  escena.mostrar(a, b, false, i => ficha(i, a, b)); textoCorrida(a, b); pintar();
+});
+opciones("casos", NS.map(x => [x, x + ""]), k => {
+  n = +k; difs = []; escena.vaciar(); ficha(0);
+  $("corrida").textContent = "Todavía no los probaste con esta cantidad."; $("corrida").className = "";
+  pintar();
+});
+
+// Unidad 1: los mismos tres casos con dos reglas de puntuar.
+const E1 = [["¿A cuánto está el núcleo?", "2 °C", "El núcleo está a 2 °C.", false, "ok"], ["¿Qué se apaga último?", "Las alarmas", "Las alarmas", true, "ok"], ["¿Cuántos sistemas hay?", "3", "Hay 13.", false, "colado"]];
+opciones("punt", [["0", "Tiene que ser idéntica"], ["1", "Alcanza con que la contenga"]], k => {
+  const laxa = k === "1";
+  $("t-eval").innerHTML = `<thead><tr><th scope="col">Caso</th><th scope="col">Esperado</th><th scope="col">Respondió</th><th scope="col">Puntaje</th></tr></thead><tbody>`
+    + E1.map(e => { const pasa = laxa || e[3], colado = laxa && e[4] === "colado";
+        return `<tr><td>${e[0]}</td><td>${e[1]}</td><td>${e[2]}</td><td class="${colado ? "mal" : pasa ? "ok" : "mal"}">${pasa ? "✓ bien" : "✕ mal"}${colado ? ", y no lo está" : ""}</td></tr>`; }).join("") + "</tbody>";
+  $("punt-txt").textContent = laxa ? "3 de 3. Deja pasar «Hay 13», que está mal: contiene un 3." : "1 de 3. Castiga una respuesta buena por traer palabras de más.";
+});
+
+// Unidad 2: cómo se reparte el uso real y cómo se reparten tus casos.
+const REAL = [["Consultas simples", 60, .96], ["Con datos que faltan", 25, .60], ["En otro idioma", 10, .50], ["Con mala intención", 5, .30]];
+const CONJ = {mios:[95, 5, 0, 0], reales:[60, 25, 10, 5]};
+const acierto = pesos => Math.round(REAL.reduce((s, r, i) => s + pesos[i] / 100 * r[2], 0) * 100);
+opciones("conj", [["mios", "Los que se me ocurrieron"], ["reales", "Sacados del uso real"]], k => {
+  const mios = CONJ[k];
+  $("pares").innerHTML = REAL.map((r, i) => `<div class="par2"><span>${r[0]}</span><div><div class="bar uso"><i style="width:${r[1] * .55}%"></i><b>${r[1]}% del uso</b></div><div class="bar tuyo"><i style="width:${mios[i] * .55}%"></i><b>${mios[i]}% de tus casos</b></div></div></div>`).join("");
+  const e = acierto(mios), v = acierto(CONJ.reales);
+  $("conj-txt").textContent = e === v ? `Tu eval dice ${e}%. En el uso real acierta ${v}%. Ahora mide lo que pasa.` : `Tu eval dice ${e}%. En el uso real acierta ${v}%. Los ${e - v} puntos de diferencia son los casos que no pusiste.`;
+  $("conj-txt").className = "lee " + (e === v ? "ok" : "mal");
+});
+
+// Unidad 3: el margen de error de A y B según la cantidad de casos.
+opciones("mues", NS.map(x => [x, x + ""]), k => {
+  const m = +k, pos = v => Math.max(0, Math.min(100, (v - 45) / 55 * 100));
+  const fila = (letra, p) => { const e = 1.96 * Math.sqrt(p * (1 - p) / m) * 100, lo = p * 100 - e, hi = p * 100 + e;
+    return {lo, hi, html:`<div class="rango"><b>${letra}</b><div class="pista2"><i style="left:${pos(lo)}%;width:${pos(hi) - pos(lo)}%"></i><u style="left:${pos(p * 100)}%"></u></div><span>${Math.round(lo)} a ${Math.round(hi)}</span></div>`}; };
+  const a = fila("A", PA), b = fila("B", PB), pisan = a.hi >= b.lo;
+  $("rangos").innerHTML = a.html + b.html;
+  $("mues-txt").textContent = `Con ${m} casos, A queda entre ${Math.round(a.lo)} y ${Math.round(a.hi)}%, y B entre ${Math.round(b.lo)} y ${Math.round(b.hi)}%. ` + (pisan ? "Los rangos se pisan: no podés decir cuál es mejor." : "Ya no se pisan: B es mejor.");
+  $("mues-txt").className = "lee " + (pisan ? "suerte" : "ok");
+});
+
+// Unidad 4: el juez contra una persona, antes y después de calibrarlo.
+const JUEZ = {
+  sin:{mas:"", distintas:[2, 5, 9, 11, 14, 17], txt:"Coinciden en 14 de 20. De las 6 que no, en 5 el juez aprobó algo que la persona había desaprobado: es blando."},
+  con:{mas:"<br>Estas 5 ya las corrigió una persona. Usalas de vara: […]", distintas:[11], txt:"Coinciden en 19 de 20. Ahora puede corregir solo, y vos revisás una muestra cada tanto."}};
+opciones("juez", [["sin", "Juez sin calibrar"], ["con", "Con ejemplos de una persona"]], k => {
+  const j = JUEZ[k];
+  $("juez-pedido").innerHTML = `<span>&gt;</span> ¿Esta respuesta está bien? Contestá sí o no.<span class="mas">${j.mas}</span>`;
+  $("juez-celdas").innerHTML = Array.from({length:20}, (_, i) => j.distintas.includes(i) ? '<span class="mal">✕</span>' : '<span class="ok">✓</span>').join("");
+  $("juez-txt").textContent = j.txt;
+});
+
+// Unidad 5: una planilla de mil filas. Cada manera de revisar encuentra un problema distinto sin leerla entera.
+// [clave, botón, filas que hay que leer, lo que encuentra]
+const REV = [
+  ["contar", "Contar las filas", 0, "faltan 2 facturas"],
+  ["sumar", "Sumar y comparar con el banco", 0, "hay un importe mal cargado"],
+  ["huecos", "Buscar casilleros vacíos", 0, "hay 2 filas sin fecha"],
+  ["azar", "Abrir 20 al azar", 20, "1 de las 20 tiene el nombre mal, así que debe haber unas 50 en toda la planilla"]];
+const revOn = new Set();
+$("rev").innerHTML = REV.map(r => `<button class="tog" type="button" data-r="${r[0]}" aria-pressed="false">${r[1]}</button>`).join("");
+function verRev(){
+  const on = k => revOn.has(k), marca = (k, txt) => on(k) ? `<td class="mal">✕ ${txt}</td>` : "<td></td>";
+  $("planilla").innerHTML = `<thead><tr><th scope="col">Cliente</th><th scope="col">Fecha</th><th scope="col">Importe</th><th scope="col"><span class="vh">Problema</span></th></tr></thead><tbody>
+    <tr><td>Pérez, Ana</td><td>03/03</td><td>$12.400</td><td></td></tr>
+    <tr><td>Gómez, Luis</td><td class="${on("huecos") ? "mal" : ""}">${on("huecos") ? "(vacío)" : ""}</td><td>$8.150</td>${marca("huecos", "sin fecha")}</tr>
+    <tr><td class="${on("azar") ? "mal" : ""}">Ruis, Jose</td><td>07/03</td><td>$3.300</td>${marca("azar", "es Ruiz")}</tr>
+    <tr class="mas"><td colspan="4">… y 995 filas más</td></tr>
+    <tr class="pie"><td colspan="3">Filas: ${on("contar") ? "998, y las facturas eran 1000" : "sin contar"}</td>${marca("contar", "faltan 2")}</tr>
+    <tr class="pie"><td colspan="3">Total: ${on("sumar") ? "$4.213.900, y el banco dice $4.132.000" : "sin sumar"}</td>${marca("sumar", "no da")}</tr></tbody>`;
+  document.querySelectorAll("#rev [data-r]").forEach(b => b.setAttribute("aria-pressed", on(b.dataset.r)));
+  const usados = REV.filter(r => on(r[0])), leidas = usados.reduce((s, r) => s + r[2], 0);
+  $("rev-txt").textContent = !usados.length ? "Así como está parece prolija. Para estar seguro a ojo tendrías que leer las 1000 filas."
+    : `Leíste ${leidas} de 1000 filas y ya sabés que ${usados.map(r => r[3]).join(", ")}.`;
+}
+$("rev").addEventListener("click", ev => {
+  const b = ev.target.closest("[data-r]"); if (!b) return;
+  revOn.has(b.dataset.r) ? revOn.delete(b.dataset.r) : revOn.add(b.dataset.r); verRev();
+});
+verRev();
+
+// Unidad 6: cuatro casos a lo largo de cuatro versiones.
+const REG = [["Premio falso", [1, 1, 1, 1]], ["Mail de un familiar", [1, 1, 1, 0]], ["Mail vacío", [0, 1, 1, 1]], ["Aviso falso del banco", [0, 0, 0, 1]]];
+opciones("reg", [["nuevo", "Solo lo que arreglé"], ["todo", "Todos los casos"]], k => {
+  const todo = k === "todo";
+  $("t-reg").innerHTML = `<thead><tr><th scope="col">Caso</th>${[1, 2, 3, 4].map(v => `<th scope="col">v${v}</th>`).join("")}</tr></thead><tbody>`
+    + REG.map((r, i) => `<tr><td>${r[0]}</td>${r[1].map((ok, v) => { const visto = todo || (i === 3 && v === 3);
+        return `<td class="${!visto ? "nada" : ok ? "ok" : "mal"}">${!visto ? '<span aria-hidden="true">·</span><span class="vh">sin correr</span>' : ok ? "✓" : "✕"}</td>`; }).join("")}</tr>`).join("") + "</tbody>";
+  $("reg-txt").textContent = todo ? "El cambio que arregló «Aviso falso del banco» rompió «Mail de un familiar». Lo ves antes de sacar la versión."
+    : "Arreglaste «Aviso falso del banco» y pasa. Lo que rompiste en el camino no lo corriste: te vas a enterar por otro.";
+  $("reg-txt").className = "lee " + (todo ? "ok" : "suerte");
+});
+
+iniciarCurso();
+</script>
+</body>
+</html>

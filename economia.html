@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Economía del cómputo · La carrera que no existía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="curso.css">
+</head>
+<body data-materia="Economía del cómputo" data-sigue="Criterio de producto" data-sigue-href="criterio.html">
+<div class="wrap">
+  <header class="tope">
+    <div>
+      <div class="miga"><span>La carrera que no existía</span><b>Año 3 · Materia 6 de 8</b></div>
+      <h1>Economía del cómputo</h1>
+      <p class="idea">Cuánto cómputo merece cada tarea.</p>
+    </div>
+    <nav class="pasos-nav" id="nav" aria-label="Partes de la materia"></nav>
+  </header>
+
+  <main>
+  <div tabindex="-1" class="paso" data-n="Demo" data-t="La demo">
+  <section class="demo" aria-labelledby="t-demo">
+    <div class="cab">
+      <h2 id="t-demo">¿Qué modelo contesta los mails?</h2>
+      <p class="como">Una tienda recibe 10.000 mails de clientes por mes: 7.000 son preguntas simples, como el horario o el envío, y 3.000 son reclamos. Un agente los contesta.</p>
+    </div>
+    <div class="izq">
+      <div class="rot" style="margin-top:0">Lo que sabés de cada modelo</div>
+      <table class="tabla compacta"><thead><tr><th scope="col">Modelo</th><th scope="col">Por mail</th><th scope="col">Simples bien</th><th scope="col">Reclamos bien</th></tr></thead>
+        <tbody><tr><td>Grande</td><td>$10</td><td>99%</td><td>95%</td></tr><tr><td>Chico</td><td>$1</td><td>99%</td><td>60%</td></tr></tbody></table>
+      <p class="correcta"><span class="rotm">Cada mail mal contestado</span> <b>lo arregla una persona: $300</b></p>
+      <div class="rot" id="rot-est">A qué modelo mandás cada mail</div>
+      <div class="fila col" id="est" role="group" aria-labelledby="rot-est"></div>
+    </div>
+    <div class="der">
+      <div class="rot" style="margin-top:0">Lo que cuesta por mes</div>
+      <div class="apilada" aria-hidden="true"><i class="fac" id="b-fac"></i><i class="err" id="b-err"></i></div>
+      <p class="leyenda2" aria-hidden="true"><span class="pto fac"></span>Lo que cobra el modelo <span class="pto err"></span>Arreglar los mails mal contestados</p>
+      <table class="tabla compacta" id="detalle"></table>
+      <div class="rot">Las que ya probaste</div>
+      <div id="probadas"></div>
+      <div class="cuenta" id="cuenta" aria-live="polite"><span class="n" id="n"></span><p id="msj"></p></div>
+    </div>
+  </section>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="01" data-t="Qué cuesta una respuesta" hidden>
+    <div class="texto">
+      <span class="num">Unidad 01</span>
+      <h2>Qué cuesta una respuesta</h2>
+      <p>Un modelo cobra por el texto que lee y el que escribe, en pedazos que se llaman tokens. Un token es más o menos tres cuartos de palabra.</p>
+      <p>Lo que más pesa casi nunca es la respuesta: es todo lo que le das a leer, cada vez.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-tok" style="margin-top:0">Tu pedido</div>
+      <div class="fila" id="tok" role="group" aria-labelledby="rot-tok"></div>
+      <p class="pedido" id="tok-pedido" style="margin-top:10px"></p>
+      <div class="probs" id="tok-barras" style="margin-top:10px"></div>
+      <p class="lee" id="tok-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="02" data-t="Grande, chico o un programa" hidden>
+    <div class="texto">
+      <span class="num">Unidad 02</span>
+      <h2>Grande, chico o un programa común</h2>
+      <p>El modelo grande sabe más y cuesta más. El chico sabe menos y cuesta poco. Y a veces no hace falta ningún modelo.</p>
+      <p>Se elige por tarea, no una vez para todo.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-cual" style="margin-top:0">La tarea</div>
+      <div class="fila" id="cual" role="group" aria-labelledby="rot-cual"></div>
+      <table class="tabla" id="t-cual"></table>
+      <p class="lee" id="cual-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="03" data-t="El que reparte" hidden>
+    <div class="texto">
+      <span class="num">Unidad 03</span>
+      <h2>El que reparte también se equivoca</h2>
+      <p>Repartir es mandar cada pedido al más barato que alcance. Pero alguien tiene que decidir cuál es fácil y cuál no.</p>
+      <p>Si ese reparto es torpe, los casos difíciles llegan al que no puede con ellos.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-rep" style="margin-top:0">Cómo decide a quién va cada mail</div>
+      <div class="fila" id="rep" role="group" aria-labelledby="rot-rep"></div>
+      <table class="tabla" id="t-rep"></table>
+      <p class="lee" id="rep-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="04" data-t="Guardar lo repetido" hidden>
+    <div class="texto">
+      <span class="num">Unidad 04</span>
+      <h2>No pagar dos veces lo mismo</h2>
+      <p>Si 400 clientes por día preguntan lo mismo, no hace falta calcular 400 veces la respuesta. Se calcula una, se guarda y se reusa.</p>
+      <p>Lo guardado tiene una trampa: cuando cambia lo que responde, hay que borrarlo.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">1.000 preguntas por día. 400 son «¿Cuánto sale el envío?»</div>
+      <div class="fila" id="cache" role="group" aria-label="Qué hacés con las repetidas"></div>
+      <div class="probs" id="cache-barras" style="margin-top:10px"></div>
+      <p class="lee" id="cache-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="05" data-t="Rápido o barato" hidden>
+    <div class="texto">
+      <span class="num">Unidad 05</span>
+      <h2>Rápido o barato</h2>
+      <p>Responder al instante cuesta más que responder en tanda, de noche, cuando sobra capacidad.</p>
+      <p>La pregunta es si alguien está esperando del otro lado.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-lat" style="margin-top:0">Cómo lo corrés</div>
+      <div class="fila" id="lat" role="group" aria-labelledby="rot-lat"></div>
+      <table class="tabla" id="t-lat"></table>
+      <p class="lee" id="lat-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="06" data-t="El costo que no se factura" hidden>
+    <div class="texto">
+      <span class="num">Unidad 06</span>
+      <h2>El costo que no viene en la factura</h2>
+      <p>Lo que cobra el modelo es una parte. La otra es el tiempo de la gente que revisa lo que hizo y arregla lo que salió mal.</p>
+      <p>El agente barato puede ser el más caro.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">Dos agentes para la misma tarea. Una hora de una persona: $6.000</div>
+      <div class="fila" id="tot" role="group" aria-label="Qué mirás"></div>
+      <div id="tot-g" class="grafico"></div>
+      <p class="lee" id="tot-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="Taller" data-t="El taller" hidden>
+    <div class="texto">
+      <span class="num">Unidad 07 · Taller</span>
+      <h2>Bajar el costo a la mitad sin que empeore</h2>
+      <ol>
+        <li>Anotá cuánto cuesta hoy un mes, sumando el tiempo de revisar.</li>
+        <li>Separá los pedidos por tipo y contá cuántos hay de cada uno.</li>
+        <li>Para cada tipo, probá lo más barato que alcance: un programa, un modelo chico o una respuesta guardada. Medí con tus casos, como en la materia 2.</li>
+        <li>Volvé a sumar.</li>
+      </ol>
+      <p class="nota">Aprobás cuando el total es la mitad y los aciertos no bajaron.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">Para el paso 2, pegá esto con tus pedidos</div>
+      <pre id="prompt">Te paso 200 pedidos reales del último mes.
+Agrupalos por tipo y contá cuántos hay de cada uno.
+Para cada tipo, decime si alcanza con una regla fija,
+con un modelo chico o si necesita el grande, y por qué.
+No cambies nada: solo armá la tabla.</pre>
+      <button class="copiar" id="copiar" type="button" aria-live="polite">Copiar</button>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso cierre" data-n="Cierre" data-t="El cierre" hidden>
+    <span class="num">Cierre</span>
+    <h2>¿Entonces siempre el más barato?</h2>
+    <p class="resp"><b>No.</b> El más barato es el que, sumando todo, cuesta menos: lo que cobra, lo que se espera y lo que hay que arreglar después.</p>
+    <p class="resp">Ahorrar en el modelo y pagarlo en horas de gente no es ahorrar.</p>
+    <div class="tres">
+      <div class="ejemplo"><span class="rotm">Lo repetido</span><p>Guardalo. Lo que ya se calculó no se vuelve a pagar.</p></div>
+      <div class="ejemplo"><span class="rotm">Lo fácil</span><p>Al modelo chico, o a un programa común. El grande no lo va a hacer mejor.</p></div>
+      <div class="ejemplo"><span class="rotm">Lo difícil</span><p>Al grande, sin culpa. Ahí cada error cuesta más que la diferencia.</p></div>
+    </div>
+    <p class="verbo"><q>No hagas ping, a menos que tengas algo que valga la latencia.</q>Protocolo Glasswing. Archivo de Austral.</p>
+  </div>
+  </main>
+
+  <footer class="pie-nav">
+    <button class="copiar" id="ant" type="button"><span aria-hidden="true">← </span>Anterior</button>
+    <span class="aviso">Simulacro de juguete: los precios, los tiempos y los porcentajes están inventados. El temario es una opinión, no un plan de estudios oficial. <a href="https://kvothesson.com/">Kvothesson</a> · Universo Austral.</span>
+    <button class="copiar sig" id="sig" type="button"></button>
+  </footer>
+</div>
+
+<script src="curso.js"></script>
+<script>
+const plata = n => "$" + Math.round(n).toLocaleString("es-AR");
+const barras = (el, filas) => $(el).innerHTML = filas.map(f => `<div class="prob ${f.cls || ""}"><b>${f.t}</b><span class="barrita"><i style="width:${Math.max(.5, f.p * 100)}%"></i></span><span>${f.v}</span></div>`).join("");
+
+// Demo principal: tres maneras de repartir los mails, con la factura y lo que cuesta arreglar los errores.
+const SIMPLES = 7000, RECLAMOS = 3000, ARREGLO = 300, MAXIMO = 391000;
+const EST = {
+  grande:["Todo al modelo grande", 10 * 10000, SIMPLES * .01 + RECLAMOS * .05,
+    "Contesta casi todo bien, pero paga precio de grande por 7.000 preguntas que el chico contestaba igual."],
+  chico:["Todo al modelo chico", 1 * 10000, SIMPLES * .01 + RECLAMOS * .40,
+    "La factura más baja, y el total más caro: 1.270 mails mal contestados que alguien tiene que arreglar."],
+  repartir:["Cada mail al que alcance: simples al chico, reclamos al grande", .5 * 10000 + 1 * SIMPLES + 10 * RECLAMOS, SIMPLES * .01 + RECLAMOS * .05,
+    "Pagás el grande solo donde hace falta. Incluye $5.000 de un modelo chico que lee cada mail y decide a cuál mandarlo."]};
+const probadas = {};
+opciones("est", Object.entries(EST).map(([k, e]) => [k, e[0]]), k => {
+  const [, fac, errores, txt] = EST[k], arreglo = errores * ARREGLO, total = fac + arreglo;
+  $("b-fac").style.width = fac / MAXIMO * 100 + "%"; $("b-err").style.width = arreglo / MAXIMO * 100 + "%";
+  $("detalle").innerHTML = `<tbody><tr><td>Lo que cobra el modelo</td><td>${plata(fac)}</td></tr><tr><td>${Math.round(errores).toLocaleString("es-AR")} mails mal contestados × $300</td><td>${plata(arreglo)}</td></tr><tr class="total"><td>Total por mes</td><td>${plata(total)}</td></tr></tbody>`;
+  probadas[k] = total;
+  const mejor = Math.min(...Object.values(probadas));
+  $("probadas").innerHTML = Object.entries(probadas).map(([p, t]) => `<span class="k ${t === mejor && Object.keys(probadas).length > 1 ? "ok" : ""}">${EST[p][0].split(":")[0]}: ${plata(t)}</span>`).join("");
+  $("n").textContent = Math.round(total / 1000) + " mil"; $("msj").textContent = txt;
+  $("cuenta").classList.toggle("listo", k === "repartir");
+}, "grande");
+
+// Unidad 1: lo que lee pesa más que lo que escribe.
+const TOK = {
+  corta:["Una pregunta corta", "¿Cuál es el plazo para devolver un producto?", 70, 60, "$0,30 y 2 segundos.", "Barato y rápido: lee poco y escribe poco."],
+  manual:["Con el manual pegado", "¿Cuál es el plazo para devolver un producto? (y abajo, el manual entero de 80 páginas)", 40000, 60, "$40 y 9 segundos.", "La misma respuesta, 130 veces más cara. Casi todo lo que pagás es leer el manual."],
+  mil:["Eso, mil veces por día", "Lo mismo, cada vez que un cliente pregunta algo.", 40000, 60, "$40.000 por día. $1,2 millones por mes.", "Si el manual hace falta siempre, pasale solo la parte que importa, o guardalo una vez (unidad 04)."]};
+opciones("tok", Object.entries(TOK).map(([k, t]) => [k, t[0]]), k => {
+  const t = TOK[k];
+  $("tok-pedido").innerHTML = `<span>&gt;</span> ${t[1]}`;
+  barras("tok-barras", [{t:"Lee", p:t[2] / 40000, v:t[2].toLocaleString("es-AR") + " tokens", cls:"top"}, {t:"Escribe", p:t[3] / 40000, v:t[3] + " tokens"}]);
+  $("tok-txt").textContent = `Cuesta ${t[4]} ${t[5]}`;
+  $("tok-txt").className = "lee " + (k === "corta" ? "ok" : k === "manual" ? "suerte" : "mal");
+});
+
+// Unidad 2: tres tareas y con qué conviene hacer cada una.
+const CUAL = {
+  nro:["¿El mail trae un número de pedido?", [["Un programa común", "al instante", "nada", "siempre", 1], ["Modelo chico", "1 segundo", "$1", "casi siempre", 0], ["Modelo grande", "3 segundos", "$10", "casi siempre", 0]], "Es buscar cinco números después de la palabra «pedido». Un programa común lo hace gratis y no se equivoca."],
+  hora:["Contestar «¿A qué hora abren?»", [["Un programa común", "no puede", "", "", 0], ["Modelo chico", "1 segundo", "$1", "bien", 1], ["Modelo grande", "3 segundos", "$10", "bien", 0]], "Hay que entender la pregunta, pero es fácil. El grande contesta igual y cuesta diez veces más."],
+  rec:["Contestar un reclamo con un caso raro", [["Un programa común", "no puede", "", "", 0], ["Modelo chico", "1 segundo", "$1", "4 de cada 10, mal", 0], ["Modelo grande", "3 segundos", "$10", "bien", 1]], "Acá el chico sale caro: cada respuesta mala la arregla una persona. El grande vale lo que cuesta."]};
+opciones("cual", Object.entries(CUAL).map(([k, v]) => [k, v[0]]), k => {
+  $("t-cual").innerHTML = `<thead><tr><th scope="col">Con qué</th><th scope="col">Tarda</th><th scope="col">Cuesta</th><th scope="col">Sale</th></tr></thead><tbody>`
+    + CUAL[k][1].map(r => `<tr class="${r[4] ? "elegida" : ""}"><td>${r[4] ? '<span aria-hidden="true">★ </span>' : ""}${r[0]}${r[4] ? '<span class="vh"> (conviene)</span>' : ""}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join("") + "</tbody>";
+  $("cual-txt").textContent = CUAL[k][2];
+});
+
+// Unidad 3: cinco mails y a quién los manda cada forma de repartir. El cuarto es un reclamo disfrazado.
+const MAILS = [["«¿A qué hora abren?»", 0, 0], ["«¿Cuánto sale el envío a Córdoba?»", 0, 0], ["«Me llegó roto y quiero la devolución.»", 1, 1], ["«¿A qué hora abren? Ya fui tres veces, estaba cerrado, y me vendieron mal una pieza.»", 1, 0], ["«¿Tienen talle M?»", 0, 0]];
+opciones("rep", [["frase", "Por la primera frase"], ["entero", "Leyendo el mail entero"]], k => {
+  const entero = k === "entero";
+  $("t-rep").innerHTML = `<thead><tr><th scope="col">Mail</th><th scope="col">Va al</th><th scope="col">Resultado</th></tr></thead><tbody>`
+    + MAILS.map(m => { const va = entero ? m[1] : m[2], bien = va === m[1];
+        return `<tr><td>${m[0]}</td><td>${va ? "grande" : "chico"}</td><td class="${bien ? "ok" : "mal"}">${bien ? "✓ bien" : "✕ le contestó el horario y nada más"}</td></tr>`; }).join("") + "</tbody>";
+  $("rep-txt").textContent = entero ? "Leer el mail entero cuesta $0,50 más por mail, y el reclamo disfrazado llega al grande. Ese medio peso ahorra un cliente enojado."
+    : "Gratis, pero el cuarto empieza como pregunta simple y es un reclamo. Fue al chico, que contestó el horario y nada más.";
+  $("rep-txt").className = "lee " + (entero ? "ok" : "mal");
+});
+
+// Unidad 4: calcular cada vez, guardar las repetidas, y qué pasa cuando cambia el precio.
+opciones("cache", [["cada", "Calcular cada vez"], ["guardar", "Guardar las repetidas"], ["cambio", "Guardarlas, y el envío aumentó"]], k => {
+  const guarda = k !== "cada";
+  barras("cache-barras", [{t:"Calculadas", p:guarda ? .6 : 1, v:guarda ? "600" : "1.000", cls:"top"}, {t:"Guardadas", p:guarda ? .4 : 0, v:guarda ? "400" : "0", cls:k === "cambio" ? "vieja" : ""}]);
+  $("cache-txt").textContent = k === "cada" ? "Cuesta $1.000 por día. 400 veces se calcula la misma respuesta."
+    : k === "guardar" ? "Cuesta $600 por día. La respuesta del envío se calcula una vez y se reusa 400 veces."
+    : "Sigue costando $600, pero las 400 guardadas dicen el precio viejo. Lo guardado se borra cuando cambia lo que responde.";
+  $("cache-txt").className = "lee " + (k === "cada" ? "suerte" : k === "guardar" ? "ok" : "mal");
+});
+
+// Unidad 5: dos tareas, al instante o por tanda.
+opciones("lat", [["rapido", "Al instante"], ["tanda", "Por tanda, de noche"]], k => {
+  const rapido = k === "rapido";
+  const F = rapido ? [["Chat de atención en vivo", "2 segundos · $10", 1, "el cliente está esperando en la pantalla"], ["Informe de ventas para mañana", "2 segundos · $10", 0, "pagaste una rapidez que nadie esperaba"]]
+    : [["Chat de atención en vivo", "a la mañana siguiente · $5", 0, "el cliente ya se fue"], ["Informe de ventas para mañana", "a la mañana · $5", 1, "nadie lo lee antes, y salió a mitad de precio"]];
+  $("t-lat").innerHTML = `<thead><tr><th scope="col">Tarea</th><th scope="col">Sale</th><th scope="col">¿Sirve?</th></tr></thead><tbody>`
+    + F.map(f => `<tr><td>${f[0]}</td><td>${f[1]}</td><td class="${f[2] ? "ok" : "mal"}">${f[2] ? "✓" : "✕"} ${f[3]}</td></tr>`).join("") + "</tbody>";
+  $("lat-txt").textContent = rapido ? "Para el chat, perfecto. Para el informe, estás pagando el doble por algo que nadie mira hasta mañana." : "Para el informe, perfecto. Para el chat, no sirve a ningún precio.";
+});
+
+// Unidad 6: dos agentes, con y sin el tiempo de revisar. Revisar A lleva 2 horas por día; B, 15 minutos.
+const AG = [["Agente A, el barato", 50000, 2 * 22 * 6000, "2 horas por día de revisión"], ["Agente B, el caro", 120000, .25 * 22 * 6000, "15 minutos por día de revisión"]];
+opciones("tot", [["factura", "Mirar solo la factura"], ["total", "Sumar el tiempo de revisar"]], k => {
+  const total = k === "total", MAX = 314000;
+  $("tot-g").innerHTML = AG.map(a => `<div class="fila-ag"><b>${a[0]}</b><div class="apilada" aria-hidden="true"><i class="fac" style="width:${a[1] / MAX * 100}%"></i><i class="err" style="width:${total ? a[2] / MAX * 100 : 0}%"></i></div><span>${plata(a[1] + (total ? a[2] : 0))}${total ? `<small>${plata(a[1])} de factura + ${a[3]}</small>` : "<small>de factura</small>"}</span></div>`).join("")
+    + `<p class="leyenda2" aria-hidden="true"><span class="pto fac"></span>Factura del modelo${total ? ' <span class="pto err"></span>Horas de gente revisando' : ""}</p>`;
+  $("tot-txt").textContent = total ? "Sumando las horas de revisar, el barato cuesta el doble: $314.000 contra $153.000 por mes."
+    : "Mirando la factura, el A sale menos de la mitad que el B. Parece fácil.";
+  $("tot-txt").className = "lee " + (total ? "ok" : "suerte");
+});
+
+iniciarCurso();
+</script>
+</body>
+</html>

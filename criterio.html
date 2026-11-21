@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Criterio de producto · La carrera que no existía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="curso.css">
+</head>
+<body data-materia="Criterio de producto" data-sigue="Responsabilidad" data-sigue-href="responsabilidad.html">
+<div class="wrap">
+  <header class="tope">
+    <div>
+      <div class="miga"><span>La carrera que no existía</span><b>Año 4 · Materia 7 de 8</b></div>
+      <h1>Criterio de producto</h1>
+      <p class="idea">Qué vale la pena construir cuando construir es fácil.</p>
+    </div>
+    <nav class="pasos-nav" id="nav" aria-label="Partes de la materia"></nav>
+  </header>
+
+  <main>
+  <div tabindex="-1" class="paso" data-n="Demo" data-t="La demo">
+  <section class="demo ancha-izq" aria-labelledby="t-demo">
+    <div class="cab">
+      <h2 id="t-demo">Elegí dos</h2>
+      <p class="como">Tenés una tienda online. Con agentes, cualquiera de estas ideas se construye en un día. Este mes elegís dos: todo lo que se construye, después hay que mantenerlo.</p>
+    </div>
+    <div class="izq">
+      <table class="tabla compacta ideas"><thead><tr><th scope="col">Idea</th><th scope="col">La piden</th><th scope="col">Lo que muestran los datos</th></tr></thead><tbody id="ideas"></tbody></table>
+      <div class="fila" style="margin-top:10px"><button class="accion" id="construir" type="button" disabled>Construir y esperar un mes</button><span class="leyenda" id="elegidas-txt"></span></div>
+    </div>
+    <div class="der">
+      <div class="rot" style="margin-top:0">Un mes después</div>
+      <ol class="acciones" id="resultados"></ol>
+      <div class="cuenta" id="cuenta" aria-live="polite"><span class="n" id="n"></span><p id="msj"></p></div>
+    </div>
+  </section>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="01" data-t="El problema primero" hidden>
+    <div class="texto">
+      <span class="num">Unidad 01</span>
+      <h2>El problema antes que la solución</h2>
+      <p>«Quiero un agente para la tienda» es una solución buscando problema. La pregunta que va primero es a quién le duele qué.</p>
+      <p>A veces la respuesta ni siquiera necesita un agente.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" id="rot-prob" style="margin-top:0">Por dónde empezás</div>
+      <div class="fila" id="prob" role="group" aria-labelledby="rot-prob"></div>
+      <div id="prob-g" class="grafico"></div>
+      <p class="lee" id="prob-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="02" data-t="Lo que hacen" hidden>
+    <div class="texto">
+      <span class="num">Unidad 02</span>
+      <h2>Lo que piden, lo que dicen, lo que hacen</h2>
+      <p>Pedir no cuesta nada. Decir «sí, lo usaría» en una encuesta, tampoco. Usarlo de verdad cuesta tiempo.</p>
+      <p>Por eso lo que la gente hace es la evidencia que más vale.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">La idea: una app de la tienda para el celular</div>
+      <div class="fila" id="evi" role="group" aria-label="Qué evidencia mirás"></div>
+      <div class="probs" id="evi-barras" style="margin-top:10px"></div>
+      <p class="lee" id="evi-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="03" data-t="Prototipar para aprender" hidden>
+    <div class="texto">
+      <span class="num">Unidad 03</span>
+      <h2>Prototipar para aprender</h2>
+      <p>Un prototipo no es una versión chica del producto. Es una pregunta: ¿esto le sirve a alguien?</p>
+      <p>Si se hace en horas, tirarlo no duele, y lo que aprendiste queda.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">La idea: una calculadora de envío antes del carrito</div>
+      <div class="fila" id="pro" role="group" aria-label="Cómo empezás"></div>
+      <div id="pro-g" class="grafico"></div>
+      <p class="lee" id="pro-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="04" data-t="Decir que no" hidden>
+    <div class="texto">
+      <span class="num">Unidad 04</span>
+      <h2>Decir que no</h2>
+      <p>Construir se volvió casi gratis. Mantener, no: cada cosa que existe hay que arreglarla cuando algo cambia y explicarla cuando alguien pregunta.</p>
+      <p>Lo que nadie usa te sigue costando horas todos los meses.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">Este año pidieron 12 cosas. Cada una pide 3 horas por mes</div>
+      <div class="fila" id="no" role="group" aria-label="Qué construís"></div>
+      <div class="cuadros" id="cuadros" style="margin-top:10px"></div>
+      <p class="lee" id="no-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="05" data-t="Trabajar con un agente" hidden>
+    <div class="texto">
+      <span class="num">Unidad 05</span>
+      <h2>Diseñar cómo se trabaja con el agente</h2>
+      <p>Si el producto tiene un agente adentro, también hay que diseñar la relación: qué te muestra, cuándo te pregunta y cómo lo corregís.</p>
+      <p>Un agente que no muestra nada no se puede supervisar.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">Un agente contestó los mails de hoy. Lo que te muestra al terminar</div>
+      <div class="fila" id="dis" role="group" aria-label="Cómo está diseñado"></div>
+      <div class="mail" id="dis-panel" style="margin-top:10px"></div>
+      <p class="lee" id="dis-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="06" data-t="Gusto" hidden>
+    <div class="texto">
+      <span class="num">Unidad 06</span>
+      <h2>Gusto</h2>
+      <p>Un agente te genera cien opciones en un segundo. Elegir la buena es lo que queda de tu lado.</p>
+      <p>Y el gusto se puede explicar: reconocer la buena es poder decir por qué.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">Tu pedido</div>
+      <p class="pedido"><span>&gt;</span> Escribí el asunto del mail que anuncia el envío gratis en compras de más de $30.000.</p>
+      <div class="rot" id="rot-gus">Te dio seis. Elegí una</div>
+      <div class="fila col" id="gus" role="group" aria-labelledby="rot-gus"></div>
+      <p class="lee" id="gus-txt" role="status"></p>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso unidad" data-n="Taller" data-t="El taller" hidden>
+    <div class="texto">
+      <span class="num">Unidad 07 · Taller</span>
+      <h2>Diez prototipos, uno elegido</h2>
+      <ol>
+        <li>Elegí un problema real, con alguien a quien le duele.</li>
+        <li>Pedile a un agente diez maneras de resolverlo, y prototipá las que se puedan probar en una hora.</li>
+        <li>Mostrale las tres mejores a cinco personas con ese problema. Mirá qué hacen, no qué dicen.</li>
+        <li>Elegí una y escribí en cinco líneas por qué esa y no las otras.</li>
+      </ol>
+      <p class="nota">Aprobás cuando tu elección se defiende con lo que hizo la gente, no con lo que te gustaba a vos.</p>
+    </div>
+    <div class="ejemplo">
+      <div class="rot" style="margin-top:0">Para el paso 2</div>
+      <pre id="prompt">Tengo este problema: [...]. Le pasa a: [...].
+Dame diez maneras distintas de resolverlo,
+de la más simple a la más ambiciosa.
+Para cada una: qué haría falta construir,
+en cuánto tiempo se puede probar
+y cómo sabría si funciona.</pre>
+      <button class="copiar" id="copiar" type="button" aria-live="polite">Copiar</button>
+    </div>
+  </div>
+
+  <div tabindex="-1" class="paso cierre" data-n="Cierre" data-t="El cierre" hidden>
+    <span class="num">Cierre</span>
+    <h2>¿Entonces hay que construir menos?</h2>
+    <p class="resp"><b>No.</b> Hay que probar más y lanzar menos. Cuando construir cuesta un día, se puede probar diez ideas para lanzar una.</p>
+    <p class="resp">Lo escaso ya no es el tiempo de construir. Es el criterio para elegir.</p>
+    <div class="tres">
+      <div class="ejemplo"><span class="rotm">Probá mucho</span><p>Prototipos de horas. Tirarlos no duele, y cada uno te enseña algo.</p></div>
+      <div class="ejemplo"><span class="rotm">Lanzá poco</span><p>Lo que lanzás lo mantenés para siempre. Que sea lo que la gente usa.</p></div>
+      <div class="ejemplo"><span class="rotm">Mirá lo que hacen</span><p>Lo que dicen y lo que piden orienta. Lo que hacen decide.</p></div>
+    </div>
+    <p class="verbo"><q>¿Esto puede hacerse hoy con las herramientas que ya existen, aunque sea de forma incómoda?</q>El Plugin como Forma de Ser, novena Ley del Constructor. Archivo de Austral.</p>
+  </div>
+  </main>
+
+  <footer class="pie-nav">
+    <button class="copiar" id="ant" type="button"><span aria-hidden="true">← </span>Anterior</button>
+    <span class="aviso">Simulacro de juguete: la tienda, los pedidos y los datos están inventados. El temario es una opinión, no un plan de estudios oficial. <a href="https://kvothesson.com/">Kvothesson</a> · Universo Austral.</span>
+    <button class="copiar sig" id="sig" type="button"></button>
+  </footer>
+</div>
+
+<script src="curso.js"></script>
+<script>
+const quietoDemo = matchMedia("(prefers-reduced-motion: reduce)").matches || location.search.includes("sin-animacion");
+
+// Demo principal: seis ideas, con lo que piden y lo que muestran los datos. Se eligen dos.
+// [idea, la piden, lo que muestran los datos, resolvió un problema (1/0), horas por mes de mantener, lo que pasó]
+const IDEAS = [
+  ["Modo oscuro", "120 personas", "nadie se queja de la pantalla clara", 0, 1, "Lo usa el 4%. Era lo más pedido: pedir no cuesta nada."],
+  ["Chat con un agente para dudas", "30 personas", "2.000 mails por mes con dudas", 1, 6, "Resuelve 6 de cada 10 dudas. Pide 6 horas por mes de ajustes."],
+  ["Seguimiento del envío en la página", "15 personas", "4 de cada 10 mails son «¿dónde está mi pedido?»", 1, 2, "Los mails de «¿dónde está?» bajaron a la mitad."],
+  ["Recomendaciones con IA", "nadie: fue idea del jefe", "nada que la sostenga", 0, 10, "1% de clics. Pide 10 horas por mes para que no recomiende cualquier cosa."],
+  ["Conectar con 5 redes sociales", "8 personas", "el 2% de las visitas llega desde redes", 0, 12, "La usan 2 personas. Cada vez que una red cambia algo, se rompe."],
+  ["Calculadora de envío", "5 personas", "3 de cada 10 abandonan el carrito al ver el envío", 1, 2, "El abandono del carrito bajó de 30% a 18%."]];
+const elegidas = new Set();
+let corrida = 0;
+function verIdeas(){
+  $("ideas").innerHTML = IDEAS.map((d, i) => `<tr><td><button class="tog idea" type="button" data-i="${i}" aria-pressed="${elegidas.has(i)}"${!elegidas.has(i) && elegidas.size >= 2 ? " disabled" : ""}>${d[0]}</button></td><td>${d[1]}</td><td>${d[2]}</td></tr>`).join("");
+  $("construir").disabled = elegidas.size !== 2;
+  $("elegidas-txt").textContent = elegidas.size === 2 ? "" : `Elegí ${2 - elegidas.size} más.`;
+}
+function fila(i, visible){
+  const d = IDEAS[i];
+  return `<li class="${!visible ? "espera" : d[3] ? "solo" : "dano"}"><span class="m" aria-hidden="true">${visible ? (d[3] ? "✔" : "✘") : ""}</span><span><b>${d[0]}</b><span class="vh">${visible ? (d[3] ? ": resolvió un problema" : ": no resolvió nada") : ""}.</span></span><small>${d[4]} h/mes</small><span class="nota">${visible ? d[5] : "&nbsp;"}</span></li>`;
+}
+function cerrar(lista){
+  const resueltos = lista.filter(i => IDEAS[i][3]).length, horas = lista.reduce((s, i) => s + IDEAS[i][4], 0), mejor = lista.includes(2) && lista.includes(5);
+  $("n").textContent = `${resueltos} de 2`; $("cuenta").classList.toggle("listo", mejor);
+  $("msj").textContent = mejor ? `resolvieron un problema que se veía en los datos, y entre las dos piden ${horas} horas por mes. Ninguna era de las más pedidas.`
+    : `resolvieron un problema que se veía en los datos. Mantenerlas te va a llevar ${horas} horas por mes.` + (lista.includes(0) ? " El modo oscuro era lo más pedido y casi nadie lo usa." : "") + (resueltos === 2 ? " Hay un par que resuelve lo mismo con menos horas." : "");
+}
+$("construir").addEventListener("click", () => {
+  const mia = ++corrida, lista = [...elegidas].sort((a, b) => a - b);
+  $("n").textContent = "?"; $("msj").textContent = "Pasando el mes…"; $("cuenta").classList.remove("listo");
+  if (quietoDemo) { $("resultados").innerHTML = lista.map(i => fila(i, true)).join(""); cerrar(lista); return; }
+  $("resultados").innerHTML = lista.map(i => fila(i, false)).join("");
+  lista.forEach((i, k) => setTimeout(() => { if (mia !== corrida) return; $("resultados").children[k].outerHTML = fila(i, true); if (k === lista.length - 1) cerrar(lista); }, 600 + k * 900));
+});
+$("ideas").addEventListener("click", ev => {
+  const b = ev.target.closest("[data-i]"); if (!b) return;
+  const i = +b.dataset.i; elegidas.has(i) ? elegidas.delete(i) : elegidas.add(i); verIdeas();
+});
+verIdeas();
+$("resultados").innerHTML = '<li class="espera vacio"><span></span><span>Elegí dos ideas y construí.</span></li>';
+$("n").textContent = "?"; $("msj").textContent = "Mirá las dos columnas antes de elegir: lo que la gente pide y lo que hace.";
+
+const fl = '<span class="flecha" aria-hidden="true">→</span>', caja = (rot, txt, cls = "") => `<div class="caja ${cls}"><span class="rotm">${rot}</span>${txt}</div>`;
+
+// Unidad 1: empezar por la solución o por el problema.
+opciones("prob", [["sol", "Por la solución"], ["prob", "Por el problema"]], k => {
+  const sol = k === "sol";
+  $("prob-g").innerHTML = `<div class="cadena tres">` + (sol
+    ? caja("Pedido", "«Hacé un chat con un agente para la tienda.»") + fl + caja("Lo construís", "Un chat que contesta dudas generales.") + fl + caja("Lo que pasa", "✕ Le preguntan «¿dónde está mi pedido?» y no lo sabe: no tiene los envíos.", "roto")
+    : caja("Pregunta", "¿A quién le duele qué?") + fl + caja("Los datos", "4 de cada 10 mails dicen «¿dónde está mi pedido?»") + fl + caja("Lo que hacés", "✓ Un link de seguimiento en el mail de compra. Sin agente.", "freno")) + `</div>`;
+  $("prob-txt").textContent = sol ? "Un buen chat, para un problema que no era el que había. Los mails siguen llegando."
+    : "Los mails de «¿dónde está?» bajaron a la mitad, con un link. La mejor solución no siempre tiene un agente adentro.";
+  $("prob-txt").className = "lee " + (sol ? "mal" : "ok");
+});
+
+// Unidad 2: tres tipos de evidencia sobre la misma idea.
+const EVI = {
+  piden:["Lo que piden", "12 pedidos en el buzón de sugerencias", .012, "Doce personas de diez mil clientes. Pedir no cuesta nada, y los que piden no son todos."],
+  dicen:["Lo que dicen", "70% contestó «sí, la usaría» en una encuesta", .70, "Siete de cada diez dicen que sí. Decir que sí tampoco cuesta nada."],
+  hacen:["Lo que hacen", "De 500 que instalaron una prueba, 30 la abrieron más de una vez", .06, "Seis de cada cien. Esta es la que cuesta algo dar: tiempo. Por eso es la que decide."]};
+opciones("evi", Object.entries(EVI).map(([k, e]) => [k, e[0]]), k => {
+  $("evi-barras").innerHTML = Object.entries(EVI).map(([c, e]) => `<div class="prob ${c === k ? "elegida" : ""}"><b>${e[0]}</b><span class="barrita"><i style="width:${Math.max(.6, e[2] * 100)}%"></i></span><span>${Math.round(e[2] * 1000) / 10}%</span></div>`).join("");
+  $("evi-txt").textContent = `${EVI[k][1]}. ${EVI[k][3]}`;
+  $("evi-txt").className = "lee " + (k === "hacen" ? "ok" : "suerte");
+});
+
+// Unidad 3: construir entero o probar en horas.
+opciones("pro", [["entero", "Construirla entera"], ["proto", "Un prototipo en dos horas"]], k => {
+  const entero = k === "entero";
+  $("pro-g").innerHTML = `<div class="cadena tres">` + (entero
+    ? caja("Semanas 1 a 3", "La calculadora completa, con todas las ciudades.") + fl + caja("Semana 4", "La lanzás.") + fl + caja("Semana 5", "✕ Aprendés que querían saber cuándo llega, no cuánto cuesta.", "roto")
+    : caja("Horas 1 y 2", "Una página con el envío a 3 ciudades, armada a mano.") + fl + caja("Día 2", "100 visitas. Casi todos preguntan cuándo llega.", "freno") + fl + caja("Semana 1", "✓ Construís «llega el jueves», que es lo que querían.", "freno")) + `</div>`;
+  $("pro-txt").textContent = entero ? "Tres semanas para aprender algo que se podía saber en un día. Y ahora hay que mantener una calculadora que nadie pidió así."
+    : "Dos horas de prototipo te ahorraron tres semanas en la dirección equivocada. El prototipo se tira; lo que aprendiste, no.";
+  $("pro-txt").className = "lee " + (entero ? "mal" : "ok");
+});
+
+// Unidad 4: doce cosas pedidas, tres que alguien usa.
+const COSAS = ["Modo oscuro", "Exportar a PDF", "Seguimiento", "Cupones", "Redes", "Encuestas", "Calculadora", "Favoritos", "Chat", "Idiomas", "Comparador", "Puntos"];
+const USADAS = [2, 6, 8];
+opciones("no", [["todo", "Las 12"], ["tres", "Solo las 3 con evidencia"]], k => {
+  const todo = k === "todo";
+  $("cuadros").innerHTML = COSAS.map((c, i) => { const hecha = todo || USADAS.includes(i), usada = USADAS.includes(i);
+    return `<span class="${!hecha ? "no-hecha" : usada ? "usada" : "nadie"}">${c}<small>${!hecha ? "no se hizo" : usada ? "la usan" : "nadie la usa"}</small></span>`; }).join("");
+  $("no-txt").textContent = todo ? "36 horas por mes de mantenimiento, casi una semana de alguien. 27 de esas horas son para 9 cosas que nadie usa."
+    : "9 horas por mes. Las otras nueve quedaron en una lista: si algún día aparece evidencia, se construyen en un día.";
+  $("no-txt").className = "lee " + (todo ? "mal" : "ok");
+});
+
+// Unidad 5: lo que muestra el agente al terminar, en dos diseños.
+opciones("dis", [["negra", "Una caja negra"], ["bien", "Pensado para supervisarlo"]], k => {
+  const bien = k === "bien";
+  $("dis-panel").innerHTML = bien
+    ? `<p><b>Contesté 230 mails.</b></p><p>12 los dejé para vos: no estaba seguro. <span class="clave tapada">Ver los 12</span></p><p>En 3 usé un tono más formal porque el cliente estaba enojado. ¿Está bien así?</p><p class="de">Para corregirme, marcá una respuesta y escribí qué cambiar. Lo aplico a las parecidas.</p>`
+    : `<p><b>Listo. Contesté 230 mails.</b></p>`;
+  $("dis-txt").textContent = bien ? "Sabés qué hizo, qué no se animó a hacer y cómo enseñarle. Supervisarlo te lleva diez minutos."
+    : "No sabés cuáles contestó bien, ni si dudó en alguno, ni cómo corregirlo. Para confiar, tendrías que leer los 230.";
+  $("dis-txt").className = "lee " + (bien ? "ok" : "mal");
+});
+
+// Unidad 6: seis asuntos generados, con lo que tiene cada uno.
+const ASUNTOS = [
+  ["¡¡¡ENVÍO GRATIS!!!", 0, "Grita. Los filtros de correo lo mandan a spam, y la gente también."],
+  ["Novedades sobre nuestra política de envíos", 0, "No dice qué cambió. Suena a letra chica."],
+  ["Envío gratis*", 0, "El asterisco avisa que hay trampa antes de abrir el mail."],
+  ["Tu próxima compra llega gratis", 0, "Cercano, pero promete de más: no dice que es desde $30.000. El que compre por menos se va a sentir engañado."],
+  ["Te tenemos una sorpresa", 0, "No dice nada. Hay que abrirlo para saber, y muchos no lo abren."],
+  ["Desde hoy, envío gratis en compras de más de $30.000", 1, "Dice qué, desde cuándo y con qué condición. Sin gritar y sin esconder nada. Esta."]];
+opciones("gus", ASUNTOS.map((a, i) => [String(i), a[0]]), k => {
+  const a = ASUNTOS[+k];
+  if (!a) { $("gus-txt").textContent = "Elegí la que mandarías. Después probá las otras."; $("gus-txt").className = "lee"; return; }
+  $("gus-txt").textContent = (a[1] ? "✓ " : "✕ ") + a[2];
+  $("gus-txt").className = "lee " + (a[1] ? "ok" : "mal");
+}, "ninguna");
+
+iniciarCurso();
+</script>
+</body>
+</html>
